@@ -1,11 +1,12 @@
-img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]{
-    display: none;
-}
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap');
 
 
 
 @media screen and (max-width: 776px) {
+    body{
+        background-position: 62% 0%;
+    }
     .nav-bar{
         display: flex;
         /* align-items: center; */
@@ -74,6 +75,11 @@ img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost
         flex-direction: column;
         flex-wrap: wrap;
     }
+    .box1{
+        overflow: hidden;
+        padding: 0% 10px;;
+    }
+    
     
 
 
@@ -332,6 +338,7 @@ footer{
     user-select: none;
 }
 .footer-content ul li{
+    list-style-type: none;
     margin: 0px 20px;
 }
 .footer-content ul{
@@ -563,6 +570,7 @@ a{
     height: 280px;
     width: 300px;
     border-radius: 8px;
+    transform: translateY(-5px);
     background-color: rgba(48, 138, 31, 0.637);
     margin: 2%;
     flex-wrap: wrap;
