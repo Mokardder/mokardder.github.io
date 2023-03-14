@@ -70,6 +70,10 @@ img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost
         margin: 0;
         padding: 0;
     }
+    .skill-container{
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
     
 
 
@@ -328,10 +332,14 @@ footer{
     user-select: none;
 }
 .footer-content ul li{
-    
     margin: 0px 20px;
 }
 .footer-content ul{
+    display: flex;
+    justify-content: center;
+    margin: 5% 0px;
+}
+.footer-content p{
     display: flex;
     justify-content: center;
     margin: 5% 0px;
@@ -395,6 +403,9 @@ label{
     font-size: 18px;
     color: white;
 }
+button a{
+    color: black;
+}
 button{
     width: 120px;
     color: white;
@@ -408,6 +419,9 @@ button:hover{
     background-color: #23dbbd;
     color: black;
     cursor: pointer;
+}
+button:hover a{
+    color: #23dbbd;
 }
 input, textarea{
     width: 250px;
@@ -484,6 +498,9 @@ input:focus, textarea:focus{
 p{
     color: white;
 }
+a{
+    text-decoration: none;
+}
 .education-container .fa-solid{
     position: relative;
     left: 30px;
@@ -499,13 +516,13 @@ p{
     
 }
 .education-container{
-    
     display: flex;
     justify-content: center;
     align-items: center;
    
 }
 .education-container table{
+    margin: 5%;
     transition: 0.3s;
     background-color: rgba(148, 131, 131, 0.171);
     border-radius: 8px;
@@ -520,6 +537,52 @@ p{
 .education-container table:hover .fa-solid{
     color: #f9004d;
 }
+
+/* Skills Section */
+.skills-section-header{
+    text-align: center;
+    animation: blinkHeaders 900ms steps(50) infinite alternate ;
+}
+.skill-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    padding: 5%;
+}
+.skillbox{
+    height: 280px;
+    width: 300px;
+    border-radius: 8px;
+    background-color: rgba(60, 68, 71, 0.637);
+    margin: 2%;
+    flex-wrap: wrap;
+    transition: 0.3s;
+}
+.skillbox:hover{
+    height: 280px;
+    width: 300px;
+    border-radius: 8px;
+    background-color: rgba(48, 138, 31, 0.637);
+    margin: 2%;
+    flex-wrap: wrap;
+}
+
+.skill-box-body{
+    padding: 8%;
+}
+img.skill-box-title{
+    height: 50px;
+}
+.skill-box-subtitle{
+    margin: 4% 0px;
+    color: white;
+}
+.skill-box-body .fa-brands{
+    font-size: 55px;
+    color: white;
+}
+/* Skillls Section */
 
 
 
