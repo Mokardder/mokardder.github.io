@@ -2,10 +2,10 @@ function postData() {
     let name_input = document.getElementById('name').value;
     let email_input = document.getElementById('email').value;
     let msg_input = document.getElementById('msg').value;
-
+    let timestam = new Date().toLocaleString(); 
 
 const url = 'https://script.google.com/macros/s/AKfycbzNaYNXvXPRa-Nz7-nm1eq58q5foly3PRv0bxoz3eZ0Ax6KYDhIAKkUuZZjce53m8Hx/exec';
-const data = { name: name_input, email: email_input, message: msg_input+"\n\n--Feedback--\n\nmokardder.github.io" };
+const data = { name: name_input, email: email_input, message: msg_input+"\n"+timestam+"\n\n--Feedback--\n\nmokardder.github.io" };
 
 fetch(url, {
 method: 'POST',
