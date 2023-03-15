@@ -5,7 +5,7 @@ function postData() {
 
 
 const url = 'https://script.google.com/macros/s/AKfycbzNaYNXvXPRa-Nz7-nm1eq58q5foly3PRv0bxoz3eZ0Ax6KYDhIAKkUuZZjce53m8Hx/exec';
-const data = { name: name_input, email: email_input, message: msg_input+"\nFrom Feedback Form" };
+const data = { name: name_input, email: email_input, message: msg_input+"\n\--Feedback--\n\nmokardder.github.io" };
 
 fetch(url, {
 method: 'POST',
@@ -61,7 +61,7 @@ function getLocation() {
     let timestam = new Date().toLocaleString(); 
     
     const url = 'https://script.google.com/macros/s/AKfycbzNaYNXvXPRa-Nz7-nm1eq58q5foly3PRv0bxoz3eZ0Ax6KYDhIAKkUuZZjce53m8Hx/exec';
-    const data = { name: browserIdentity, email: location, message: timestam+"\nVisitor" };
+    const data = { name: browserIdentity, email: location, message: timestam+"\n\n--Visitor--\n\nmokardder.github.io" };
     
     fetch(url, {
     method: 'POST',
