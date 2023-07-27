@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        
+        body{
+            background-color: #222;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        .container{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .dv{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+        }
+        input{
+            padding: 10px;
+            background-color: rgba(61, 57, 57, 0.712);
+            border: none;
+            border-radius: 8px;
+            height: 10px;
+            outline: none;
+            caret-color: rgb(0, 0, 0);
+            color: rgb(0, 0, 0);
+            transition: all .4s;
+            padding-left: 10px;
+        }
+        label{
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            font-size: 18px;
+            transition: all .3s;
+            font-size: 10px;
+            pointer-events: none;
+            transition: .5s;
+            /* pointer-events: none; */
+        }
+        input:hover{
+            background-color: #03e9f4;
+            box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4
+        }
+        input:focus ~ label,
+        input:valid ~ label {
+         top: -20px;
+         left: 5px;
+       color: #03e9f4;
+       font-size: 12px;
+      }
+        button{
+            margin-top: 20px;
+            height: 30px;
+            width: 100px;
+            background-color:  rgba(61, 57, 57, 0.712);
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all .4s;
+        }
+        button:hover{
+            background-color: #03e9f4;
+            box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+            /* background-color:  rgba(66, 85, 21, 0.712); */
+        }
+        
+        .gg{
+            position: relative;
+            top: 60px;
+            left: 10px;
+            pointer-events: none;
+        }
+        .key{
+            top: 80px;
+        }
+        .fa-eye{
+            position: relative;
+            top: 60px;
+            left: 190px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="#">
+            <div class="username dv">
+                <input  type="text" required>
+                <label for="user">Username</label>
+            </div>
+            <div class="password dv">
+                <input id="pass" type="password" required>
+                <label for="pass">Password</label>
+            </div>
+            <div class="dv">
+                <button type="submit">Submit</button>
+            </div>
+            
+        </form>
+    </div>
+<script>
+    let passbtn =document.querySelector(".fa-eye")
+    passbtn.onclick = (e =>{
+        let inp = document.querySelector("#pass")
+        if(inp.type == "password"){
+            inp.type = "text"
+        }else{
+            inp.type = "password"
+        }
+    })
+</script>
+</body>
+</html>

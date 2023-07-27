@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendulum</title> 
+    <style>
+    img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]{
+    display: none;
+}
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .pendulum{
+            background-color: red;
+            height: 400px;
+            width: 20px;
+            position: relative;
+            border-radius: 20px;
+            animation-name: rotateit;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            transform-origin: 10px 25px;
+            animation-timing-function: ease-in-out;
+            top: 50px;
+        }
+        .pendulum::after{
+            content: '';
+            background-color: blue;
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            left: -15px;
+            border-radius: 50%;
+        }
+        .pendulum::before{
+            content: 'Pendulum Using Transform Origin by Mokardder';
+            text-align: center;
+            background-color: rgb(9, 255, 0);
+            height: 100px;
+            width: 150px;
+            position: absolute;
+            top: 90%;
+            left: -65px;
+            border-radius:5px;
+        }
+        @keyframes rotateit{
+            from{
+                transform: rotate(-25deg);
+            }
+            to{
+                transform: rotate(25deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="pendulum">
+            <h1></h1>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]{
+    display: none;
+}
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        span{
+            font-size: 35px;
+            position: relative;
+        }
+        #one::before{
+            content: 'M';
+            position: absolute;
+            top: 0px;
+            animation-name: falls;
+            animation-fill-mode: forwards;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+        #two::before{
+            content: 'U';
+            position: absolute;
+            top: 0px;
+            animation-name: falls;
+            animation-fill-mode: forwards;
+            animation-duration: 3.8s;
+            animation-iteration-count: infinite;
+        }
+        #three::before{
+            content: 'S';
+            position: absolute;
+            top: 0px;
+            animation-name: falls;
+            animation-fill-mode: forwards;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+        #four::before{
+            content: 'S';
+            position: absolute;
+            top: 0px;
+            animation-name: falls;
+            animation-fill-mode: forwards;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+        }
+        #five::before{
+            content: '.';
+            position: absolute;
+            top: 0px;
+            animation-name: falls;
+            animation-fill-mode: forwards;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes falls{
+
+            100%{
+                opacity: 0;
+                top: 200%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span id="one">M</span>
+        <span id="two">U</span>
+        <span id="three">S</span>
+        <span id="four">S</span>
+        <span id="five">.</span>
+    </div>
+</body>
+</html>

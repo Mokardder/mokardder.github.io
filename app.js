@@ -1,3 +1,4 @@
+
 function postData() {
   let name_input = document.getElementById('name').value;
   let email_input = document.getElementById('email').value;
@@ -6,7 +7,7 @@ function postData() {
 
 
 const url = 'https://script.google.com/macros/s/AKfycbwyLYzWi4BFjxW46sfsaj54TZsvfsdclWBoRCwxSCQ_UYYZcj7CsnaBip40DWBUiqO0/exec';
-const data = { name: name_input, email: email_input, message: msg_input, type:"Feedback", date: timestam, site: "mokardder.github.io"};
+const data = { name: name_input, email: email_input, message: msg_input, type:"Feedback", date: timestam, site: "mokardder.000webhostapp.com"};
 
 fetch(url, {
 method: 'POST',
@@ -63,7 +64,7 @@ function sendToGoogleSheet( location, browserIdentity){
   const url = 'https://script.google.com/macros/s/AKfycbwyLYzWi4BFjxW46sfsaj54TZsvfsdclWBoRCwxSCQ_UYYZcj7CsnaBip40DWBUiqO0/exec';
   // const data = { name: browserIdentity, email: location, message: timestam+"\n\n--Visitor--\n\nmokardder.000webhostapp.com" };
   
-  const data = { name: browserIdentity, email: location, message: "", type:"Visitor", date: timestam, site: "mokardder.github.io"};
+  const data = { name: browserIdentity, email: location, message: "", type:"Visitor", date: timestam, site: "mokardder.000webhostapp.com"};
 
 
 
@@ -100,8 +101,29 @@ let userAgent = match[0];
 return userAgent;
 }
 
-
+  function removePop(){
+            let popup  = document.getElementById("hide-pop");
+            popup.style.display = "none";
+              visitCount();
+        }
+        
+    
 
 window.onload = function() {
-   visitCount();
-};
+            popUp();
+            
+        });
+    
+            
+            function popUp(){
+              let popup  = document.getElementById("hide-pop");
+              popup.style.display = "block";
+ 
+            }
+        }
+      
+
+        
+
+
+ 

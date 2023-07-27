@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  @include flex();
+  background: #222;
+}
+.container {
+  padding: 8px;
+  color: white;
+  width: 520px;
+  @include flex();
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  flex-direction: column;
+  border-radius: 5px;
+  gap: 10px;
+  position: relative;
+  .device_list {
+    // height: 50px;
+    // width: 400px;
+    // background-color: white;
+    @include flex();
+    gap: 10px;
+    flex-direction: column;
+    border-radius: 5px;
+    .device {
+      height: 50px;
+      width: 500px;
+      background-color: rgba(39, 90, 19, 0.418);
+      border-radius: 5px;
+      transition: 0.2s;
+      position: relative;
+      display: grid;
+      place-items: center;
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(39, 90, 19, 0.815);
+      }
+      .ico {
+        font-size: 25px;
+        position: absolute;
+        top: 13px;
+        left: 10px;
+      }
+      .d-name {
+        font-size: 20px;
+        text-align: center;
+      }
+      .l-active {
+        position: absolute;
+        font-size: 12px;
+        top: 18px;
+        right: 10px;
+      }
+    }
+  }
+  .reload {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: 0.3s;
+    &:hover {
+      cursor: pointer;
+      transform: rotate(100deg);
+    }
+  }
+}

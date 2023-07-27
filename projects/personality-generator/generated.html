@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Personality</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+        img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+            display: none;
+        }
+
+        body {
+            scroll-behavior: smooth;
+            /* overflow: scroll; */
+        }
+
+        * {
+            margin: 0px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.5s;
+        }
+
+        .container {
+            padding: 50px;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            background: #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+        }
+
+        .ball-container {
+            /* margin-top: 10%; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* padding: 10%; */
+        }
+
+        .ball {
+            height: 200px;
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            opacity: 1;
+            animation: animateBG;
+
+        }
+
+        .name-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            margin: 30px;
+            color: rgba(255, 255, 255, 0.616);
+        }
+
+        .name {
+            text-transform: capitalize;
+        }
+
+        .fchar {
+            font-size: 110px;
+        }
+
+        .qoute {
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* padding: 2%; */
+        }
+
+        .qoute-txt {
+            text-transform: capitalize;
+            color: rgba(255, 255, 255, 0.596);
+            position: relative;
+            text-align: center;
+            z-index: 10;
+            font-size: 15px;
+        }
+
+        .name {
+            color: rgba(255, 255, 255, 0.562);
+        }
+
+        .name-user {
+            transition: all 0.5s;
+            animation: blinkName 2s ease-in-out 0ms infinite alternate;
+        }
+
+        .name-user::before {
+            content: '❤  ';
+            opacity: 0.1;
+            z-index: 2;
+        }
+
+        .name-user::after {
+            content: '  ❤';
+            opacity: 0.1;
+            z-index: 2;
+        }
+
+        td {
+            font-size: 19px;
+            font-weight: bold;
+            padding: 0 15px;
+        }
+
+        .button-wp {
+            margin-top: 1rem;
+        }
+
+        .button-wp button {
+            padding: 5px 15px;
+            background-color: transparent;
+            color: white;
+            outline: none;
+            border: 1px solid white;
+            border-radius: 8px;
+            border-top-right-radius: 25px;
+            border-bottom-left-radius: 25px;
+            cursor: pointer;
+        }
+
+        .table-header {
+            text-align: center;
+        }
+
+        @keyframes blinkName {
+            0% {
+                text-shadow: 0px 0px 0px white;
+            }
+
+            100% {
+                text-shadow: 1px 1px 10px white;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="ball-container">
+            <div class="ball">
+                <h1 class="fchar"></h1>
+            </div>
+        </div>
+
+
+        <div class="name-container">
+            <h2 class="name">Hey ,</h2>
+            <h2 class="name-user"></h2>
+            <h4 class="table-header">Your Personality</h4>
+            <table>
+                <tr>
+                    <td>Loyality</td>
+                    <td id="log"></td>
+                </tr>
+                <tr>
+                    <td>Richness</td>
+                    <td id="dir"></td>
+                </tr>
+                <tr>
+                    <td>Care</td>
+                    <td id="soc"></td>
+                </tr>
+                <tr>
+                    <td>Cuteness</td>
+                    <td id="exp"></td>
+                </tr>
+            </table>
+            <a class="button-wp" href=""><button>Share to Your Friend</button></a>
+        </div>
+        <div class="qoute">
+            <h3 class="qoute-txt"></h3>
+        </div>
+    </div>
+    <script>
+
+        let ball = document.querySelector('.ball')
+        let logo = document.querySelector('.fchar');
+        let fname = document.querySelector('.name-user');
+        let wpBtn = document.querySelector('.button-wp');
+        let fval = localStorage.getItem('fname');
+        let lsval = localStorage.getItem('fchar');
+        console.log(fval, lsval);
+        let qoute_txt = document.querySelector('.qoute-txt');
+        logo.innerHTML = lsval;
+        fname.innerHTML = fval;
+        // Personality
+        let log = document.querySelector('#log');
+        let dir = document.querySelector('#dir');
+        let soc = document.querySelector('#soc');
+        let exp = document.querySelector('#exp');
+
+        Math.ceil(Math.random() * 100);
+        exp.innerHTML = Math.ceil(Math.random() * 100) + '%😉';
+        soc.innerHTML = Math.ceil(Math.random() * 100) + '%😎';
+        dir.innerHTML = Math.ceil(Math.random() * 100) + '%😊';
+        log.innerHTML = Math.ceil(Math.random() * 100) + '%😋';
+
+        wpBtn.addEventListener("click", () => {
+            console.log('Here is Data', log.innerHTML);
+            wpBtn.setAttribute("href", `whatsapp://send?text=*${fval}❤*%0A%0A*Your Personality*%0A*Loyality: ${log.innerHTML}*%0A*Richness: ${dir.innerHTML}*%0A*Care: ${soc.innerHTML}*%0A*Cuteness: ${exp.innerHTML}* %0A%0A*Check Out Yours*%0A👇👇👇%0A https://mokardder.000webhostapp.com/projects/personality-generator/personality-generator.html`);
+
+        })
+        let randomColorBG = Math.floor(Math.random() * 16777215).toString(16);
+        ball.style.backgroundColor = "#" + randomColorBG;
+
+        fetch("https://type.fit/api/quotes")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                let randomQuote = Math.floor(Math.random() * data.length);
+                qoute_txt.innerHTML = data[randomQuote].text
+                console.log(data[randomQuote].text);
+            });
+    </script>
+</body>
+
+</html>

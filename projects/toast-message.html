@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding Text</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            @font-face {
+    font-family: myFirstFont;
+    src: url('https://mokardder.000webhostapp.com/fonts/Mokardder-Lipi/Mokardder-Lipi.woff');
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'myFirstFont', sans-serif;
+    /* background: #00c851; */
+}
+button{
+    height: 50px;
+    width: 90px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.toast-container{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    height: 40px;
+    width: 310px;
+    
+    /* background-color: red; */
+}
+.toast-hide{
+    opacity: 0;
+    pointer-events: none;
+}
+.toast-wrapper{
+    height: 100%;
+    /* background-color: #00c851; */
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 20px;
+    animation-name: moveRight;
+    animation-duration: 0.5s;
+    margin: 8px 2px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s 0s;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+.border-bottom{
+    height: 70px;
+    width: 0%;
+    position: absolute;
+    bottom: 0;
+    border-bottom: 3px solid #007e33 ;
+    animation-name: incrWidth;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+
+}
+.success{
+    background-color: #00c851;
+
+}
+.alert{
+    background-color: #ffbb33;;
+
+}
+.err{
+    background-color: #ff4444;
+}
+.success-border{
+    border-bottom-color: #007e33;
+
+}
+.alert-border{
+    border-bottom-color: #ff8800;
+
+}
+.err-border{
+    border-bottom-color: #cc0000;
+}
+
+
+
+.toast-removed{
+   transform: translateX(50vw);
+}
+
+.toast-js{
+    height: 100%;
+}
+.fa-solid{
+    font-size: 20px;
+    /* position: absolute; */
+    top: 10px;
+    left: 20px;
+    color: white;
+    opacity: 0.8;
+    margin-left: 20px;
+}
+@keyframes moveRight {
+    0%{
+        right: -350px;
+    }
+    100%{
+        right: 0px;
+    }
+}
+@keyframes incrWidth {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+        </style>
+</head>
+
+<body>
+    <div class="toast-container">
+        <div class="toast-js">
+        </div>
+    </div>
+    <div>
+        <button id="scsBtn">Success</button>
+        <button id="errBtn">Error</button>
+        <button id="alrtBtn">Alert</button>
+        <script>
+            let popUp = document.querySelector(".toast-js");
+let scsbtn = document.querySelector("#scsBtn");
+let alrtbtn = document.querySelector("#alrtBtn");
+let errbtn = document.querySelector("#errBtn");
+
+let SuccessMessage = "তোমার ₹ 100 খেয়ে নিয়েছি আমি";
+let ErrorMessage = "যাহহহ ₹ 100 যাইনি";
+let AlertMessage = "নাও গেলো তো তোমার ₹ 100 ";
+
+console.log()
+
+
+errbtn.addEventListener("click", ()=>{
+    setToast(ErrorMessage,"err");
+
+    errbtn.disabled = true;
+    setTimeout(() =>{
+        errbtn.disabled = false
+    }, 3000)
+    
+})
+
+alrtbtn.addEventListener("click", () =>{
+    alrtbtn.disabled = true;
+    setToast(AlertMessage, "alrt");
+    setTimeout(() =>{
+        alrtbtn.disabled = false
+    }, 3000)
+})
+
+
+
+scsbtn.addEventListener("click", ()=>{
+    setToast(SuccessMessage, "scs");
+    scsbtn.disabled = true;
+    setTimeout(() =>{
+        scsbtn.disabled = false
+    }, 3000)
+    
+})
+
+
+
+let setToast = (msg, type) =>{
+
+    let ico; 
+
+    let pop = document.createElement("div")
+    pop.classList.add("toast-wrapper")
+
+    
+    if(type == "err"){
+    ico = "fa-sharp fa-solid fa-xmark";
+   }else if(type == "alrt"){
+    ico = "fa-solid fa-circle-exclamation"
+   }else{
+    ico = "fa-solid fa-circle-check"
+   }
+
+
+   pop.innerHTML = 
+
+   `
+   <div class="border-bottom" ></div>
+   <i class="${ico}"></i>
+   <p style="color: white">${msg}</p>
+   `
+
+   if(type == "err"){
+
+ pop.classList.add("err")
+ pop.querySelector(".border-bottom").classList.add("err-border")
+
+}else if(type == "alrt"){
+
+    pop.classList.add("alert")
+    pop.querySelector(".border-bottom").classList.add("alert-border")
+   
+
+}else{
+    pop.classList.add("success")
+    pop.querySelector(".border-bottom").classList.add("success-border")
+   
+}
+
+    popUp.appendChild(pop);
+
+    setTimeout(()=>{
+        pop.classList.add("toast-removed")
+    
+    }, 5000 )
+
+    pop.addEventListener("transitionend",() => {
+        pop.remove();
+    })
+
+
+}
+
+        </script>
+    </div>
+</body>
+
+</html>

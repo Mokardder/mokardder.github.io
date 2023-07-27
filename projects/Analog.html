@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog  Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --background : #EEF0F4;
+    --text: black;
+    --b-s:  19.22px 19.22px 22px #C8CACD, -19.22px -19.22px 22px #FFFFFF;
+    --b-s-i:  inset 19.22px 19.22px 22px #C8CACD, inset -19.22px -19.22px 22px #FFFFFF;
+
+}
+body.dark{
+    --background : #656565;
+    --text: white;
+    --b-s: 19.22px 19.22px 22px #555555, inset -19.22px -19.22px 22px #757575;
+    --b-s-i: inset 9.91px 9.91px 15px #5C5C5C, inset -9.91px -9.91px 15px #6E6E6E;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--background);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    /* transition: all .3s; */
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    position: relative;
+}
+.clock{
+    height: 400px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    /* position: relative; */
+    color: var(--text);
+    background: var(--background);
+border-radius: 100%;
+box-shadow: var(--b-s)
+}
+.inner{
+    height: 360px;
+    width: 360px;
+    background: var(--background);
+border-radius: 100%;
+box-shadow: var(--b-s-i);
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.dot{
+    height: 90px;
+    width: 90px;
+    background: var(--background);
+border-radius: 100%;
+box-shadow: var(--b-s);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.dot2{
+    height: 50px;
+    width: 50px;
+    background: var(--background);
+    border-radius: 100%;
+    box-shadow: var(--b-s-i);
+
+}
+label {
+    position: absolute;
+    inset: 40px;
+    text-align: center;
+    font-size: 30px;
+    transform: rotate(calc(var(--i) * (360deg/12)));
+} 
+span{
+    position: absolute;
+    transform: rotate(calc(var(--i) * (-360deg/12)));
+    /* transform: rotate(calc(var(--i) * (-360deg/12))); */
+}
+.indicator{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, -90%);
+    height: 10px;
+    width: 10px;
+    /* background-color: black; */
+}
+.indicator::before{
+    position: absolute;
+    bottom: -10px;
+    left: -7px;
+    content: "";
+    height: 10px;
+    width: 10px;
+    background-color: white;
+    border: 4px solid red;
+    z-index: 1;
+    border-radius: 50%;
+}
+.indicator .lathi{
+    position: absolute;
+    bottom: 0;
+    /* height: 60px; */
+    width: 5px;
+    /* background-color: black; */
+    transform-origin: bottom;
+    /* border-radius: 20px; */
+    border-top-left-radius: 120px;
+    border-top-right-radius: 0px;
+    /* transition: transform .5s; */
+    
+}
+.sec{
+    background-color: red;
+    height: 130px;
+    /* transform: rotate(90deg); */
+}
+.min{
+    background-color: blue;
+    height: 110px;
+    /* transform: rotate(180deg); */
+}
+.hour{
+    background-color: black;
+    height: 100px;
+    /* transform: rotate(200deg); */
+}
+.btn{
+    padding: 5px 10px;
+    position: absolute;
+    bottom: -90px;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.diallines{
+    position: absolute;
+    top: 22px;
+    width: 2px;
+    height: 15px;
+    background-color: black;
+    z-index: 2;
+    left: 50%;
+    transform-origin: 0 178px;
+
+}
+.diallines-s{
+    position: absolute;
+    top: 22px;
+    width: 2px;
+    height: 15px;
+    background-color: black;
+    z-index: 2;
+    left: 50%;
+    transform-origin: 0 178px;
+
+}
+.diallines:nth-child(5n){
+    width: 5px;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="clock">
+            <div class="di"></div>
+            
+            
+            <div class="inner">
+                <div class="dot">
+                    <div class="dot2"></div>
+                </div>
+                
+                <label style="--i: 1"><span>1</span></label>
+                <label style="--i: 2"><span>2</span></label>
+                <label style="--i: 3"><span>3</span></label>
+                <label style="--i: 4"><span>4</span></label>
+                <label style="--i: 5"><span>5</span></label>
+                <label style="--i: 6"><span>6</span></label>
+                <label style="--i: 7"><span>7</span></label>
+                <label style="--i: 8"><span>8</span></label>
+                <label style="--i: 9"><span>9</span></label>
+                <label style="--i: 10"><span>10</span></label>
+                <label style="--i: 11"><span>11</span></label>
+                <label style="--i: 12"><span>12</span></label>
+
+            </div>
+           
+        </div>
+
+        <div class="indicator">
+            <div class="lathi sec"></div>
+            <div class="lathi min"></div>
+            <div class="lathi hour"></div>
+        </div>
+
+        <div class="btn">
+            Change BG
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script>let sec = document.querySelector(".sec"),
+        min = document.querySelector(".min"),
+        hour = document.querySelector(".hour"),
+        btn = document.querySelector(".btn"),
+        diallines = document.querySelectorAll(".di"),
+        clock = document.querySelectorAll(".clock")[0]
+       
+       
+        for(let i=0; i<120; i++){
+       
+           let diallines =  document.createElement("div")
+           diallines.classList.add("diallines")
+           diallines.style.transform = `rotate(${30 * i}deg)`
+           clock.appendChild(diallines)
+           
+        }
+        for(let i=0; i<60; i++){
+       
+           let diallines =  document.createElement("div")
+           diallines.classList.add("diallines-s")
+           diallines.style.transform = `rotate(${6 * i}deg)`
+           clock.appendChild(diallines)
+           
+        }
+       
+       
+       btn.onclick = ()=>{
+           document.body.classList.toggle("dark")
+       }
+       
+       
+       
+       
+       
+       
+       
+       setInterval(()=>{
+           let d = new Date()
+           let sect = d.getSeconds() 
+           let mint = d.getMinutes()
+           let hourt = d.getHours()
+           
+           sec.style.transform = `rotate(${(sect / 60) * 360}deg)`
+           min.style.transform = `rotate(${(mint / 60) * 360}deg)`
+           hour.style.transform = `rotate(${(hourt / 12) * 360}deg)`
+       },100)
+       
+       
+       
+       
+
+    </script>
+</body>
+</html>

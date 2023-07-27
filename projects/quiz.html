@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    
+     img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]{
+    display: none;
+}
+    
+    
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+
+
+        /* screen 320 px */
+        @media only screen and (min-width: 320px) {
+
+
+            #question-txt {
+                color: #a8d5f3;
+                font-size: 12px;
+            }
+
+            .questions {
+                top: 60px;
+            }
+
+            .questionTxt {
+                font-size: 11px;
+                color: #ecade9;
+            }
+
+            .next-btn {
+                bottom: 20px;
+            }
+
+            .pos1 {
+                height: 80px;
+                width: 80px;
+                top: 5px;
+                right: -15px;
+
+            }
+
+            .pos2 {
+                height: 80px;
+                width: 80px;
+                bottom: 5px;
+                left: -15px;
+
+            }
+        }
+
+        /* Landscape screen 320 px */
+        @media only screen and (min-width: 375px) {
+
+
+            #question-txt {
+                color: #a8d5f3;
+                font-size: 15px;
+            }
+
+            .questions {
+                top: 60px;
+            }
+
+            .questionTxt {
+                font-size: 11px;
+                color: #ecade9;
+            }
+
+            .next-btn {
+                bottom: 10px;
+            }
+
+            .pos1 {
+                height: 80px;
+                width: 80px;
+                top: 60px;
+                right: -15px;
+
+            }
+
+            .pos2 {
+                height: 80px;
+                width: 80px;
+                bottom: 60px;
+                left: -15px;
+
+            }
+        }
+
+        @media only screen and (max-width: 425px) {
+
+
+            #question-txt {
+                color: #a8d5f3;
+                font-size: 15px;
+            }
+
+            .questions {
+                top: 60px;
+            }
+
+            .questionTxt {
+                font-size: 11px;
+                color: #ecade9;
+            }
+
+            .next-btn {
+                bottom: 10px;
+            }
+
+            .pos1 {
+                height: 80px;
+                width: 80px;
+                top: 60px;
+                right: -15px;
+
+            }
+
+            .pos2 {
+                height: 80px;
+                width: 80px;
+                bottom: 60px;
+                left: -15px;
+
+            }
+        }
+
+        /* screen 370 px */
+        @media only screen and (max-width: 768px) {
+
+
+            #question-txt {
+                color: #a8d5f3;
+                font-size: 12px;
+            }
+
+            .questions {
+                top: 60px;
+            }
+
+            .questionTxt {
+                font-size: 11px;
+                color: #ecade9;
+            }
+
+            .next-btn {
+                bottom: 20px;
+            }
+
+            .pos1 {
+                height: 80px;
+                width: 80px;
+                top: 5px;
+                right: -15px;
+
+            }
+
+            .pos2 {
+                height: 80px;
+                width: 80px;
+                bottom: 5px;
+                left: -15px;
+
+            }
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            min-height: 100vh;
+            background-color: #222;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quiz-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            width: 450px;
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.041);
+            border-radius: 16px;
+            box-shadow: 0 25px 23px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.041);
+            border-radius: 10px;
+            position: relative;
+            /* overflow: hidden; */
+            z-index: 20;
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            position: absolute;
+            top: 0;
+
+            width: 100%;
+            height: 80px;
+            padding: 2%;
+        }
+
+        .next-btn {
+            position: absolute;
+            bottom: 10px;
+            height: 30px;
+            width: 90px;
+            background: rgba(136, 90, 221, 0.582);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            outline: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 0.8rem;
+            border-radius: 20px;
+        }
+
+
+        .next-btn:hover {
+            background: rgb(136, 90, 221);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        td {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: inline;
+            padding: 5px 10px;
+        }
+
+        .questions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 19% 0px;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+
+        #question-txt {
+            color: #a8d5f3;
+            font-size: 18px;
+            /* width: 80%; */
+        }
+
+        .header {
+            margin: 10px 10px;
+            font-size: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .loading {
+
+            min-height: 100vh;
+            min-width: 100vw;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.445);
+            z-index: 100;
+            gap: 12px;
+            opacity: 0;
+            transition: opacity ease 0.6s;
+            pointer-events: none;
+
+
+        }
+
+        .show-loader {
+            transition: opacity ease 0.6s;
+            opacity: 1;
+            pointer-events: visible;
+
+        }
+
+        .show-loader-info {
+            opacity: 1;
+            pointer-events: visible;
+
+        }
+
+        .loader {
+            height: 12px;
+            width: 12px;
+            background-color: white;
+            border-radius: 50%;
+            animation-name: dancingBall;
+            animation-duration: 0.8s;
+            animation-delay: -0.2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        .loader:nth-child(2) {
+            animation-delay: 0s;
+        }
+
+        .loader:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .loader:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .info-container {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: white;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: rgba(0, 0, 0, 0.308);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            width: 300px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 8px;
+            position: relative;
+            opacity: 1;
+        }
+
+        .info-txt {
+            font-size: 20px;
+            text-align: center;
+            color: rgb(0, 0, 0);
+        }
+
+
+
+        .radiant {
+            position: absolute;
+            margin: 5%;
+            height: 150px;
+            width: 150px;
+            /* background-color: red; */
+            border-radius: 100%;
+            z-index: 1;
+        }
+
+        .pos1 {
+            background: linear-gradient(135deg, #ff5b84, #eb3461);
+            top: 80px;
+            right: 350px;
+
+        }
+
+        .pos2 {
+            background: linear-gradient(135deg, #426cf8, #3ebdf0);
+            bottom: 80px;
+            left: 350px;
+
+        }
+
+        .questionTxt {
+            font-size: 18px;
+            color: #ecade9;
+        }
+
+        .scoreEl {
+            color: white;
+        }
+
+
+
+        @keyframes dancingBall {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="info-container">
+            <div class="info">
+                <p class="info-txt">Select One of The Buttons</p>
+                <button class="close-info"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+        <div class="loading">
+            <div class="loader"></div>
+            <div class="loader"></div>
+            <div class="loader"></div>
+            <div class="loader"></div>
+        </div>
+        <div class="radiant pos1"></div>
+        <div class="radiant pos2"></div>
+        <div class="quiz-box" id="quiz">
+
+            <div class="quiz-nav">
+                <p id="question-txt" class="header">Loading..</>
+            </div>
+            <div class="questions">
+                <table>
+
+                    <tr>
+                        <td>
+                            <input class="questionsRadio" type="radio" name="quest" id="a" required>
+                        </td>
+                        <td>
+                            <label class="questionTxt" id="ans_a" for="a">Loading..</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="questionsRadio" type="radio" name="quest" id="b" required>
+                        </td>
+                        <td>
+                            <label class="questionTxt" id="ans_b" for="b">Loading..</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="questionsRadio" type="radio" name="quest" id="c" required>
+                        </td>
+                        <td>
+                            <label class="questionTxt" id="ans_c" for="c">Loading..</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="questionsRadio" type="radio" name="quest" id="d" required>
+                        </td>
+                        <td>
+                            <label class="questionTxt" id="ans_d" for="d">Loading..</label>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <button type="submit" id="nextBtn" class="next-btn">NEXT</button>
+        </div>
+
+    </div>
+
+    <script>
+        let loader = document.querySelector('.loading');
+        let info = document.querySelector('.info-container');
+
+        let questionRadio = document.querySelectorAll(".questionsRadio");
+        const question_txt = document.querySelector("#question-txt");
+
+        const ans_a = document.querySelector("#ans_a");
+        const ans_b = document.querySelector("#ans_b");
+        const ans_c = document.querySelector("#ans_c");
+        const ans_d = document.querySelector("#ans_d");
+
+        loadQuizData();
+
+
+
+
+        const btnNext = document.querySelector('#nextBtn');
+
+
+
+
+
+        loader.classList.add("show-loader");
+
+        let correct_answer;
+        async function loadQuizApi() {
+            const response = await fetch("https://opentdb.com/api.php?amount=4&type=multiple&category=18");
+            let jsonData = await response.json();
+            return jsonData;
+        }
+
+
+        let currentQuiz = 0;
+        async function loadQuizData() {
+            deselectAnswers();
+
+
+            let resultArray = await loadQuizApi();
+            console.log(resultArray);
+
+            let questionArray = resultArray.results[currentQuiz]
+
+
+
+            question_txt.innerHTML = resultArray.results[currentQuiz].question;
+
+            let ans_1 = questionArray.incorrect_answers[2];
+            let ans_2 = questionArray.correct_answer
+            let ans_3 = questionArray.incorrect_answers[0]
+            let ans_4 = questionArray.incorrect_answers[1]
+
+            correct_answer = ans_2;
+
+            ans_a.innerHTML = ans_1;
+            ans_b.innerHTML = ans_2;
+            ans_c.innerHTML = ans_3;
+            ans_d.innerHTML = ans_4;
+
+
+            loader.classList.remove("show-loader");
+        }
+
+
+
+
+
+        let ansid = undefined;
+
+
+        let selectedElement;
+
+        let getSelected = () => {
+            questionRadio.forEach((answer) => {
+                if (answer.checked) {
+                    ansid = answer.id;
+
+                }
+            })
+            return ansid;
+
+        }
+
+
+
+
+
+        let scores = 0;
+        let quizContainer = document.querySelector('#quiz');
+
+        btnNext.addEventListener('click', () => {
+
+
+
+
+
+
+            console.log(getSelected());
+
+
+
+
+            selectedElement = document.querySelector("#ans_" + ansid);
+            if (correct_answer === selectedElement.innerHTML) {
+                console.log("Corret =>", selectedElement.innerHTML);
+                scores++;
+            } else {
+                console.log("incorrect_answers")
+            }
+            console.log(scores, "/4");
+            if (currentQuiz < 4) {
+                currentQuiz++;
+                loadQuizData();
+            } else {
+                if (scores == 5) {
+                    scores -= 1;
+                }
+                quizContainer.innerHTML = `
+            
+              <h2 class="scoreEl"> You Have Scored ${scores} out of 4 </h2>
+              
+              
+              `
+            }
+            ansid = undefined;
+
+
+        })
+
+
+
+        function deselectAnswers() {
+            questionRadio.forEach((answerEls) => {
+                answerEls.checked = false;
+
+            });
+        }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

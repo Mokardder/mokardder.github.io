@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            min-width: 100vw;
+            background-color: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url("https://source.unsplash.com/1600x900/?dark-macro-leaf") no-repeat center;
+            /* opacity: .5; */
+        }
+        .calender{
+            padding-bottom: 5px;
+            width: 350px;
+            background: rgba(255, 255, 255, 0.041);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 8px;
+            overflow: hidden;
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+        .cal-img{
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cal-img img{
+            height: 250px;
+            width: 100%;
+        }
+        .cal-img h1,h3{
+            top: 10px;
+            left: 15px;
+            color: white;
+            position: absolute;
+        }
+        .cal-img h3{
+            top: 60px;
+            opacity: .6;
+        }
+        .cal-day{
+            width: 100%;
+            margin-left: 8px;
+            /* height: 100px; */
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            gap: 4px;
+            font-weight: 300;
+            flex-wrap: wrap;
+            color: white;
+        }
+        .cal-day-names{
+            width: 100%;
+            margin-left: 8px;
+            height: 30px;
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            gap: 4px;
+            font-weight: 300;
+            flex-wrap: wrap;
+            color: white;
+        }
+        .d-name{
+            width: 14%;
+            text-align: center;
+        }
+        .d-name {
+            height: 30px;
+            width: 13%;
+            background: rgba(197, 179, 179, 0);
+            border-radius: 4px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.0);
+            backdrop-filter: blur(.3px);
+            -webkit-backdrop-filter: blur(.3px);
+            border: 1px solid rgba(197, 179, 179, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .days{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 13%;
+            /* From https://css.glass */
+            background: rgba(197, 179, 179, 0);
+            border-radius: 4px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.0);
+            backdrop-filter: blur(.3px);
+            -webkit-backdrop-filter: blur(.3px);
+            border: .5px solid rgba(197, 179, 179, 0.2);
+            text-align: center;
+            cursor: pointer;
+        }
+        .active{
+            background-color: #0343f4;
+            box-shadow: 0 0 5px #0343f4,
+              0 0 25px #0343f4,
+              0 0 50px #0343f4,
+              0 0 100px #0343f4,
+              0 0 200px #0343f4;
+        }
+        .prevMonth{
+            user-select: none;
+            background-color: rgba(48, 43, 43, 0.438);
+            opacity: .3;
+        }
+        .overlay{
+            position: absolute;
+            height: 100vh;
+            width: 100vw;
+            
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+   <div class="calender">
+    <div class="cal-img">
+        <img src="https://source.unsplash.com/1600x900/?dark-macro-leaf" alt="">
+        <h1 ><span class="cdate"></span>, <span class="cday"></span></h1>
+        <h3><span class="cmonth"></span></h3>
+    </div>
+    <div class="cal-day-names">
+        <div class="d-name ">Sun</div>
+        <div class="d-name">Mon</div>
+        <div class="d-name">Tue</div>
+        <div class="d-name">Wed</div>
+        <div class="d-name">Thu</div>
+        <div class="d-name">Fri</div>
+        <div class="d-name">Sat</div>
+        
+    </div>
+    <div class="cal-day">  
+   </div>
+
+   <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script> -->
+   <script >
+    
+let container = document.querySelector(".calender")
+let cal_days = document.querySelector(".cal-day")
+let cdate = document.querySelector(".cdate")
+let cday = document.querySelector(".cday")
+let cmonth = document.querySelector(".cmonth")
+let d = new Date()
+
+
+// VanillaTilt.init(container, {
+//     max: 15,
+//     speed: 1000,
+//     glare: .2
+// });
+
+
+let month = d.getMonth()
+let todayDate = d.getUTCDate()
+// console.log(month)
+let date = d.getUTCDate()
+let toDay = d.getDay()
+let year = d.getFullYear()
+
+let monthss = d.getMonth()+1
+
+
+let daysInMonth = new Date(year, monthss, 0).getDate()
+let prevMonth = new Date(year, month, 0).getDate()+1
+
+let dayofEverymonth = new Date(year, month, 1).getDay()
+
+
+let nextDay = 5 - dayofEverymonth -1 ;
+console.log(nextDay)
+
+
+cdate.innerHTML = date;
+
+
+
+let days = 
+[
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+]
+
+cday.innerHTML = days[toDay];
+// console.log(toDay)
+
+let months = 
+[
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec"
+]
+cmonth.innerHTML = months[month]
+// console.log(month)
+
+let generateDays = () =>{
+    
+    
+    for(let j = dayofEverymonth; j>0; j--){
+        let emp = document.createElement("div")
+        emp.classList.add("days");
+        emp.classList.add("prevMonth");
+        emp.innerHTML = 
+        `
+       ${prevMonth-j}
+
+        `
+        cal_days.appendChild(emp)
+    }
+    
+
+    for(let i = 0; i<daysInMonth; i++){
+        // console.log(i, daysInMonth)
+        let days = document.createElement("div")
+
+
+        days.classList.add("days");
+
+        if(todayDate == i+1){
+            // console.log(i)
+            days.classList.add("active")
+        }
+
+        
+        days.innerHTML = 
+        `
+        ${i+1}
+        `
+        cal_days.appendChild(days)
+        
+    }
+
+    for(let k = 0; k<nextDay; k++){
+        let days = document.createElement("div")
+
+
+        days.classList.add("days");
+        days.classList.add("prevMonth");
+
+        days.innerHTML = 
+        `
+        ${k+1}
+        `
+        cal_days.appendChild(days)
+
+    }
+}
+generateDays()
+
+   </script>
+   
+
+
+</body>
+</html>

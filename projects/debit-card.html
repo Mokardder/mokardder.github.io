@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vh;
+            background: #000000;
+            font-family: "Space Mono", monospace;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            /* background-color: green; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* -webkit-border-radius: 50px;
+    border-radius: 50px;
+    -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+    box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff; */
+            padding: 10px;
+        }
+
+        .card-container {
+            height: 230px;
+            width: 350px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.082);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.021);
+            backdrop-filter: blur(15.5px);
+            -webkit-backdrop-filter: blur(15.5px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.082);
+            position: relative;
+            z-index: 10;
+            transform-style: preserve-3d;
+        }
+
+        .visaLogo {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            height: 25px;
+
+        }
+
+        .bankLogo {
+            position: absolute;
+            height: 120px;
+            left: 10px;
+            top: -30px;
+        }
+
+        .card-bottom {
+            padding: 10px 20px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btm {
+            color: white;
+            font-size: 12px;
+            /* margin: 0 0 5px 10px; */
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+            flex-direction: column;
+        }
+
+        .card-number {
+            color: white;
+            position: absolute;
+            top: 39%;
+            margin-left: 5%;
+
+        }
+
+        .four-digit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input {
+            width: 50px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        input::placeholder {
+            color: white;
+            opacity: 0.4;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .blob {
+            position: absolute;
+            height: 370px;
+            width: 450px;
+            transform: translate(-35%, -35%);
+            animation-name: blob1;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
+        }
+
+        .blob2 {
+            position: absolute;
+            height: 370px;
+            width: 450px;
+            transform: translate(30%, -55%);
+            animation-name: blob2;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
+        }
+
+        .digit1 {
+            font-size: 25px;
+        }
+
+        @keyframes blob1 {
+            0% {
+                transform: translate(-35%, -35%);
+            }
+
+            100% {
+                transform: translate(-35%, -40%);
+            }
+        }
+
+        @keyframes blob2 {
+            0% {
+                transform: translate(30%, -55%);
+            }
+
+            100% {
+                transform: translate(30%, -60%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="circle">
+            <svg class="blob2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#08BDBA"
+                    d="M20,-27.9C27.3,-17.7,35.5,-12.7,45.7,-1.2C55.9,10.3,68.1,28.4,65.7,42.9C63.2,57.5,46.1,68.5,30.4,67.1C14.7,65.7,0.4,51.9,-11.4,42.7C-23.2,33.5,-32.6,28.8,-36.4,21.4C-40.1,14,-38.3,3.8,-39.6,-10.1C-40.9,-24.1,-45.3,-41.7,-39.3,-52.1C-33.2,-62.5,-16.6,-65.7,-5.1,-59.6C6.4,-53.5,12.7,-38.1,20,-27.9Z"
+                    transform="translate(100 100)" />
+            </svg>
+            <svg class="blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#FF0066"
+                    d="M63.8,-19.6C70.6,0.1,55.6,28,32,45.5C8.4,63,-23.9,70.1,-44.8,56.2C-65.8,42.3,-75.4,7.3,-66.1,-15.9C-56.7,-39.1,-28.4,-50.6,0.1,-50.6C28.5,-50.6,57,-39.2,63.8,-19.6Z"
+                    transform="translate(100 100)" />
+            </svg>
+        </div>
+        <div class="card-container">
+
+            <img class="bankLogo"
+                src="https://hindubabynames.info/downloads/wp-content/themes/hbn_download/download/banking-and-finance/paytm-payments-bank-logo.png"
+                alt="">
+            <img class="visaLogo" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="">
+            <div class="card-number">
+                <p>Card Number</p>
+                <div class="four-digit">
+                    <div class="digit1">
+                        <p>5432</p>
+                    </div>
+                    <div class="digit1">
+                        <p>3922</p>
+                    </div>
+                    <div class="digit1">
+                        <p>2542</p>
+                    </div>
+                    <div class="digit1">
+                        <p>0039</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-bottom">
+                <div class="name btm">
+                    <p>Name</p>
+                    <p>Mokardder Hossain</p>
+                </div>
+                <div class="exp btm">
+                    <p>Exp. Date</p>
+                    <p>06/26</p>
+                </div>
+                <div class="ccv btm">
+                    <p>CCV</p>
+                    <p>575</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+    <script>
+        VanillaTilt.init(document.querySelector(".card-container"), {
+            max: 15,
+            speed: 1000,
+            glare: true
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Form by Mokardder</title>
+
+<style>
+
+img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]{
+    display: none;
+}
+
+.wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 300px;
+}
+p.line{
+    
+    width: 30em;
+    border-right: 2px solid rgba(255, 255, 255, 0.75);
+    font-size: 180%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+p.anim-typerwriter {
+    animation: typerEffect 4s steps(30) 1s 1 normal both, blinCursor 600ms steps(40) infinite normal;
+  }
+
+@keyframes typerEffect {
+    from {
+        width: 0;
+    }
+    to {
+        width: 9.7em;
+    }
+}
+@keyframes blinCursor {
+    from{
+        border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
+
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@media screen and (max-width: 666px) {
+    td{
+        
+    padding: 4px;
+}
+} 
+ @media screen and (max-width: 360px) {
+    td{
+        width: 100%;
+    padding: 0px;
+}
+} 
+
+body{
+    overflow: hidden;
+      background-image: url(res/spratt-bg.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh;
+      width: 100vw;
+}
+
+fieldset{
+  background: rgba( 255, 255, 255, 0.10 );
+backdrop-filter: blur( 3px );
+-webkit-backdrop-filter: blur( 10px );
+border-radius: 3%;
+border-top-right-radius: 15%;
+border-bottom-left-radius: 20%;
+
+border: 1px solid rgba( 255, 255, 255, 0.50 );
+transition:0.5s;
+}
+form{
+    width: 600px;
+}
+table{
+    margin: 0px 45px;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+margin: 5%;
+}
+
+.star{
+  color: red;
+}
+input[type=checkbox]:checked {
+  outline: 5px red solid;
+    border-radius: 5px;
+}
+td{
+    padding: 8px 10px;
+}
+
+input, textarea, select, button{
+  font-family: 'Times New Roman', Times, serif;
+  box-sizing: border-box;
+  padding: 5px;
+  border: none;
+  outline: none;
+  margin-right: 9px;
+  border-bottom: 2px solid rgba(0, 0, 255, 0.466);
+  border-radius: 4px;
+  transition: 0.4s;
+
+  
+}
+button:hover{
+  transition: 0.3s;
+  background-color: white;
+  border-bottom: 2px solid blue;
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+}
+input:focus, textarea:focus, select:focus{
+
+  background-color: rgba(255, 238, 0, 0.253);
+  border-bottom: 2px solid blue;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  padding: 8px;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+</style>
+  </head>
+  <body>
+
+
+
+
+
+<div class="container">
+
+<form action="result/index.php" method="post">
+
+
+
+  <fieldset>
+ 
+
+ 
+<table>
+    <div class="wrapper">
+    <tr>
+        <td><label for="fname">First Name <span class="star">*</span>:</label></td>
+        <td><input name="Fname" type="text" class="input" id="fname" placeholder="Enter Your Name" required maxlength="10"> <span class="star">(Max 10 character)</span></td>
+    </tr>
+
+
+
+<tr>
+    <td><label for="lname">Last Name <span class="star">*</span>:</label></td>
+    <td><input name="lname" type="text" class="input" id="lname" placeholder="Enter Your Name" required maxlength="10"> <span class="star">(Max 10 character)</span></td>
+</tr>
+
+
+<tr>
+    <td><label for="gender">Gender :</label></td>
+    <td><input type="radio" class="input" required id="gender" name="gender"value="Male"> Male
+        <input type="radio" class="input" required id="gender" name="gender" value="Female"> Female</td>
+</tr>
+
+
+
+
+<tr>
+    <td><label for="dob"> Date of Birth <span class="star">*</span> :</label></td>
+    <td><input name="dob" type="date" class="input" id="dob" required></td>
+</tr>
+
+
+
+
+
+
+<tr>
+    <td><label for="mob">Mobile No <span class="star">*</span> :</label></td>
+    <td><input name="mobile" type="tel" class="input" id="mob" pattern="^9\d{9}$" min="0" max="10" required> </td>
+</tr>
+
+
+
+
+
+
+<tr>
+    <td><label for="email">Email (Optional) :</label></td>
+    <td><input name="email" type="email" class="input" id="email" title="Enter Your Email name@gmail.com" placeholder="abcd@domain_name.com"></td>
+</tr>
+
+
+
+
+<tr>
+    <td><p><label for="address">Address :</label></p></td>
+    <td><textarea name="address" class="input" id="address" title="This is enough space to fill out your address" cols="20" rows="3"></textarea></td>
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+    <td><label for="city" >Village <span class="star">*</span> :</label></td>
+    <td>
+        <select class="input" name="city" id="city" required>
+            <option value=""><--Select--></option>
+          <option value="Padmalavpur" alt>Padmalavpur</option>
+          <option value="Rampur">Rampur</option>
+          <option value="Kumarduni">Kumarduni</option>
+          </select>
+    </td>
+</tr>
+
+
+
+
+<tr>
+    <td><label for="postal">Pincode :</label></td>
+    <td><input name="postal" class="input" id="postal" type="number" title="Postal Code -- 743126" maxlength="6"></td>
+</tr>
+
+
+
+<tr>
+    <td><label for="state">State :</label></td>
+    <td><input name="state"  class="input" type="text" value="West Bengal" title="State : West Bengal (Disabled)" disabled></td>
+</tr>
+
+
+
+
+<tr>
+    <td><label for="state">Country :</label></td>
+    <td><input name="country" class="input" type="text" value="India" title="Country : India (Disabled)" disabled></td>
+</tr>
+
+
+</div>
+
+</table>
+
+
+<div class="buttons">
+<button type="submit">Submit</button>
+<button type="reset">Reset</button>
+</div>
+
+
+
+</fieldset>
+
+
+
+
+
+
+
+
+
+</form>
+
+</div>
+
+
+
+
+
+
+
+</html>

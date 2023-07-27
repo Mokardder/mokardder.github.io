@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch😉buk - log in or sign up</title>  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]{
+    display: none;
+}
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        @media screen and (max-width: 770px){
+            .login-frame{
+                margin-top: 15%;
+                padding: 5%;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            h1{
+                text-align: center;
+            }
+            
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        body{
+            /* overflow: hidden; */
+            background-color: #f0f2f5;
+        }
+        .container{
+            height: 100vh;
+            width: 100vw;
+            padding: 5%;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-frame{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            gap: 5px;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .login-img-container{
+            display: flex;
+            gap: 18px;
+        }
+        .recent-title{
+            color: rgba(0, 0, 0, 0.822);
+            font-size: 22px;
+        }
+        .title{
+            color: #1c74f4;
+            font-size: 25px;
+        }
+        .subtitle{
+            font-size: 15px;
+            color: rgba(0, 0, 0, 0.514);
+        }
+        .login-side{
+            position: relative;
+            top: -50px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+        }
+        .login-side-text{
+            position: relative;
+            left: -20px;
+        }
+        .Login-name{
+            text-align: center;
+        }
+        .login-img{
+            height: 200px;
+            width: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 15px;
+            background-color: #fff;
+            position: relative;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 0.1px rgba(0, 0, 0, 0.123) solid;
+        }
+        .login-img:hover{
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        .login-img:hover .close-icon-body{
+            background-color: white;
+
+        }
+        .login-img:hover .close-icon-body i{
+            color: black;
+        }
+        .login-img img{
+            position: absolute;
+            width: 100%;
+            border-radius: 8px 8px 0 0;
+            position: absolute;
+            top: 0;
+        }
+        .add-account{
+            display: grid;
+            place-items: center;
+            height: 80%;
+            position: absolute;
+            width: 100%;
+            border-radius: 8px 8px 0 0;
+            position: absolute;
+            top: 0;
+            background-color:#f5f6f7
+        }
+        .fa-plus-wrapper{
+            height: 40px;
+            width: 40px;
+            background-color: #3180b6;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            position: relative;
+
+        }
+        .fa-plus{
+            color: rgb(255, 255, 255);
+            font-size: 30px;
+            position: absolute;
+            left: 8px;
+        }
+        .img-body{
+            margin-top: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 12px;
+        }
+        .Login-name{
+            font-size: 16px;
+            opacity: 0.5;
+        }
+        .login-name-add{
+            color: #1877f2;
+            font-size: 18px;
+            line-height: 22px;
+        }
+        .bubble-msg-body{
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background-color: rgb(230, 48, 48);
+        }
+        .bubbl-msg{
+            color: white;
+        }
+        .close-icon-body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            transition: all 0.3s;
+            background-color: rgba(14, 13, 13, 0.349);
+        }
+        .close-icon-body i{
+            color: white;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+        .login-form{
+            height: 340px;
+            width: 350px;
+            /* padding: 5%; */
+            background-color: #fff;
+            /* margin-top: 8em; */
+            display: flex;
+            padding: 2%;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        }
+        form {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            margin: 2%;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-direction: column;
+        }
+        .num, .pass, .btn, .frgt-pass, .sign-up{
+            margin: 1%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .frgt-pass a{
+            font-size: 14px;
+        }
+        .frgt-pass a:hover{
+            text-decoration: underline;
+
+        }
+        input{
+            width: 90%;
+            padding: 8px;
+            border-radius: 5px;
+            outline: none;
+            transition: all 0.3s;
+            border: 0.1px solid rgba(0, 0, 0, 0.096);
+        }
+        .num input:focus{
+            background-color: rgba(135, 207, 235, 0.514);
+            border-radius: 8px;
+            
+        }
+        .pass input:focus::placeholder{
+            background-color: rgba(135, 207, 235, 0.514);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .fa-eye{
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            cursor: pointer;
+        }
+        .pass button{
+            
+            width: 80%;
+            padding: 5px 15px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            background-color: #1877f2;
+            cursor: pointer;
+            color: white;
+        }
+        .sign-up button{
+            margin: 15px;
+            width: 80%;
+            padding: 5px 15px;
+            outline: none;
+            padding: 5px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #42b72a;
+            cursor: pointer;
+            color: white;
+            transition: all 0.3s;
+
+        }
+        .sign-up button:hover{
+            background-color: #38a322;
+
+        }
+        a{
+            text-decoration: none;
+            font-size: 12px;
+        }
+    
+        hr{
+            width: 80%;
+            position: relative;
+           border: 1px solid rgba(51, 51, 51, 0.24);
+    
+        }
+        
+        
+
+    </style> 
+</head>
+<body>
+    
+    <div class="container">
+        <div class="login-frame">
+        <div class="login-side">
+            <div class="login-side-text">
+                <h1 class="title">Fetchbuk<sup> Lite</sup> </h1>
+            <h1 class="recent-title">Recent Logins</h1>
+        <p class="subtitle">Click your picture or add an account</p>
+    </div>
+            
+    <div class="login-img-container">
+        <div class="login-img">
+            <img src="https://scontent.fccu16-1.fna.fbcdn.net/v/t39.30808-1/309870056_487088566614904_3929102695654156310_n.jpg?stp=c0.0.160.160a_dst-jpg_p160x160&_nc_cat=110&ccb=1-7&_nc_sid=dbb9e7&_nc_ohc=FCds9ULWk5AAX94Cb6B&_nc_oc=AQmRMgJ0-9V05UG9vi1xizQcj0PRsJeN1w-YHTMLK7_68WmMrOw1JN9AYL2KrOjaJwk&_nc_ht=scontent.fccu16-1.fna&oh=00_AfD9Dhbzs1bOWWq70rVZRbP6qc2oXZcfq-634buzAYtM1A&oe=64207FAA" alt="" srcset="">
+            <div class="img-body">
+                <h3 class="Login-name">Mokardder</h3>
+            </div>
+            <div class="close-icon-body">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="bubble-msg-body">
+                <h4 class="bubbl-msg">15</h4>
+            </div>
+        </div>
+        <div class="login-img">
+            <div class="add-account">
+                <div class="fa-plus-wrapper">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            </div>
+            <div class="img-body">
+                <h3 class="login-name-add">Add Account</h3>
+            </div>
+        </div>
+    </div>
+        </div>
+        <div class="login-form">
+            <form action="">
+                <div class="num">
+                    <input type="text" required placeholder="Mobile number or email">
+                </div>
+                <div class="pass">
+                    
+                    <input type="password" required placeholder="Password">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="pass">
+                    <button type="submit">LOGIN</button>
+                </div>
+                <div class="frgt-pass">
+                    <a href="#">Forgot Password ?</a>
+                </div>
+               
+               <hr>
+                <div class="sign-up">
+                    <button type="submit">Create an Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

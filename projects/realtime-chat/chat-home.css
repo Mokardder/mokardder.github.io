@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f7f7f7;
+    font-family: 'Poppins', sans-serif;
+}
+.wrapper{
+  background: #fff;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+              0 32px 64px -48px rgba(0, 0, 0, 0.5);
+}
+.container{
+    padding: 10px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.profile{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    /* gap: 60px; */
+}
+.field img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.field{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.field .status{
+    font-size: 12px;
+    opacity: .8;
+}
+.field button{
+    padding: 7px 9px;
+    background: #0f0f0f;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+}
+.users{
+    /* height: 200px; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+.users::-webkit-scrollbar {
+    display: none;
+}
+.chats{
+    position: relative;
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    /* gap: 20px; */
+}
+.chats::after{
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.123); */
+    position: absolute;
+    content: "";
+    top: 65px;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.178);
+    width: 100%;
+    
+}
+.users{
+    width: 100%;
+}
+.status-icon{
+    height: 10px;
+    width: 10px;
+    background: green;
+    border-radius: 50%;
+}

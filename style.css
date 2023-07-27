@@ -15,7 +15,7 @@ img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost
 
 @media screen and (max-width: 776px) {
     body{
-        background-position: 62% 0%;
+        background-position: 65% 0%;
     }
     .nav-bar{
         transition: 0.6s;
@@ -110,9 +110,7 @@ img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost
 
 
 }
-html{
-    scroll-behavior: smooth;
-}
+
 
 body{
     margin: 0;
@@ -133,6 +131,68 @@ body{
     box-sizing: border-box;
     user-select: none;
 }
+/* Pop Up */
+.popup-wrapper{
+    position: fixed;
+    position: absolute;
+    top: 0;
+    transition: 0.3s;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.877);
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.popup-title{
+    margin: 2%;
+    padding: 0;
+    text-align: center;
+}
+#hide-pop{
+    transition: 0.3s;
+    display: none;
+}
+.hover-it:hover #hide-pop{
+    display: block;
+}
+.popup{
+padding: 2px;
+background: rgba(255, 255, 255, 0.09);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.52);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.068);
+height: 200px;
+width: 300px;
+position: fixed;
+border-radius: 15px;
+transition: all 300ms ease-in-out 250ms;
+z-index: 5;
+}
+.popup-description {
+margin: 2% 2%;
+text-align: center;
+}
+.submit-btn{
+color: white;
+border: none;
+outline: none;
+margin-top: 10px;
+padding: 5px 20px;
+border-radius: 8px;
+transition: 0.3s;
+
+background-color: rgba(164, 252, 0, 0.568);
+}
+.submit-btn:hover{
+color: black;
+background-color: rgba(164, 252, 0, 0.884);
+cursor: pointer;
+
+}
 
 /* nav bar */
 .nav-bar{
@@ -143,39 +203,46 @@ body{
     align-items: center;
     justify-content: space-between;
     padding: 0px 5%;
+    overflow: hidden;
 }
 nav ul li{
+    margin: 15px;
     list-style-type: none;
     display: inline;
     text-decoration: none;
     color: #fff;
     user-select: none;
 }
-nav a{
-    padding: 0px 15px;
+.nav-btn{
+    padding: 8px 5px;
     text-decoration: none;
     color: #23dbbd;
     font-size: 18px;
-    line-height: 25px;
-    border-radius: 25px;
-    transition: 0.3s;
+    /* border: 2px solid tomato; */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s;
 }
-nav ul li a:hover{
+.nav-btn:hover{
     color: #222;
-    font-size: 18px;
-    line-height: 25px;
-    border-radius: 25px;
+}
+.nav-btn::before{
+    content: '';
+    position: absolute;
+    /* top:  20%; */
+    left: 0;
+    bottom: 00%;
     background-color: #23dbbd;
+    height: 10%;
+    width: 100%;
+    z-index: -1;
+    transition: all 0.6s;
+    border-radius: 7px;
+}
+.nav-btn:hover::before{
+    height: 100%;
+}
 
-}
-.active{
-    
-    color: #222;
-    font-size: 18px;
-    line-height: 25px;
-    border-radius: 25px;
-    background-color: #23dbbd;
-}
 
 /* nav bar */
 
@@ -512,6 +579,12 @@ footer{
     text-align: center;
     user-select: none;
 }
+.footer-last {
+    margin: 2%;
+    color: #5f6362;
+    text-align: center;
+    user-select: none;
+}
 .footer-content ul li{
     list-style-type: none;
     margin: 0px 20px;
@@ -566,14 +639,8 @@ footer{
     flex-direction: column;
     margin: 5%;
 }
-.contact-me-header{
-    /* margin: 2% 0px; */
-    animation: blinkHeaders 900ms steps(50) infinite alternate ;
-}
 .contact-form-form{
-    /* margin-left: 5%; */
     position: relative;
-    /* left: 30%; */
 }
 form table tr{
     display: flex;
@@ -639,7 +706,7 @@ input:focus, textarea:focus{
     font-weight: 20;
 }
 .address{
-    margin-top: 2%;
+    margin-top: 8%;
     transition: 0.3s;
     padding: 3% 11%;
     border-radius: 8px;
@@ -698,7 +765,7 @@ a{
     padding: 20px;
 }
 .education-section h1{
-    animation: blinkHeaders 900ms steps(50) infinite alternate ;
+    /* animation: blinkHeaders 900ms steps(50) infinite alternate ; */
     margin: 2% 0px;
     text-align: center;
     
@@ -729,7 +796,7 @@ a{
 /* Skills Section */
 .skills-section-header{
     text-align: center;
-    animation: blinkHeaders 900ms steps(50) infinite alternate ;
+    /* animation: blinkHeaders 900ms steps(50) infinite alternate ; */
 }
 .skill-container{
     display: flex;
@@ -758,6 +825,40 @@ a{
     flex-wrap: wrap;
 }
 
+
+
+.right-flow{
+    display: inline;
+    transition: 0.3s;
+    position: relative;
+    top: 0px;
+    right: 20px;
+    font-size: 25px;
+    color: white;
+    opacity: 0;
+}
+.left-flow{
+    display: inline;
+    transition: 0.3s;
+    position: relative;
+    top: 0px;
+    left: 20px;
+    font-size: 25px;
+    color: white;
+    opacity: 0;
+}
+
+.hover-flow:hover .right-flow{
+    opacity: 1;
+    right: -20px;
+
+}
+.hover-flow:hover .left-flow{
+    opacity: 1;
+    left: -20px;
+
+}
+
 .skill-box-body{
     padding: 8%;
 }
@@ -776,7 +877,8 @@ img.skill-box-title{
 
 /* About Section */
 
-.about-section-header{
+.about-section-header, .project-section-header{
+    margin: 2% 0;
     text-align: center;
 }
 .about-container{
@@ -861,6 +963,138 @@ img.skill-box-title{
 .dwn-btn:hover a{
     color: black;
     
+}
+
+.project-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
+
+.cal-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
+.box-cal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 350px;
+    height: 400px;
+    gap: 20px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.13);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.9px);
+    -webkit-backdrop-filter: blur(2.9px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2%;
+}
+.cal-display{
+    position: absolute;
+    top: 5%;
+    width: 90%;
+    height: 60px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.123);
+}
+.cal-number-pad{
+    position: absolute;
+    top: 24%;
+    width: 90%;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.137);
+}
+
+.num-pad-container{
+    height: 100%;
+    width: 100%;
+    padding: 5%;
+    padding-left: 5%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 15px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr); 
+
+}
+.num-box{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #252424e5;
+    transition: all 0.5s;
+}
+.num-box:hover{
+    background-color: black;
+    cursor: pointer;
+}
+
+
+.num-box span{
+    color: white;
+    line-height: 40px;
+}
+.cal-display{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    user-select: none;
+    
+}
+.cal-display input{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: right;
+    padding: 5%;
+    font-size: 30px;
+    caret-color: rgba(0, 0, 128, 0);
+    color: white;
+    user-select: none;
+    transition: all 0.3s;
+}
+
+.equal{
+    grid-row: 4/ 2 span;
+    grid-column: 4/ 1 span;
+
+}
+.plus{
+    grid-row: 3/ 1 span;
+    grid-column: 4/ 1 span;
+
+}
+.minus{
+    grid-row: 2/ 1 span;
+    grid-column: 4/ 1 span;
+
+}
+.back-space{
+    grid-row: 1/ 1 span;
+    grid-column: 2/ 1 span;
+}
+.operator, .back-space, .equal{
+    background-color: #f9004d;
+}
+.cal-display-input::placeholder{
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    opacity: 0.4;
 }
 
 

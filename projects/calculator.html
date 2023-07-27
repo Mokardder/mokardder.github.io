@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Using CSS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    img[src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"]{
+    display: none;
+}
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+        *{
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+        body{
+            overflow: hidden;
+            background-image: linear-gradient(to right, #4B79A1,#283E51);
+        }
+        .cal-container{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5%;
+        }
+        .box-cal{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 350px;
+            height: 400px;
+            gap: 20px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.13);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(2.9px);
+            -webkit-backdrop-filter: blur(2.9px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2%;
+        }
+        .cal-display{
+            position: absolute;
+            top: 5%;
+            width: 90%;
+            height: 60px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.123);
+        }
+        .cal-number-pad{
+            position: absolute;
+            top: 24%;
+            width: 90%;
+            border-radius: 15px;
+            background: linear-gradient(315deg, #1f1f1f, #242424);
+            /* background-color: rgba(255, 255, 255, 0.137); */
+        }
+        
+        .num-pad-container{
+            height: 100%;
+            width: 100%;
+            padding: 5%;
+            padding-left: 5%;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-gap: 15px;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr); 
+
+        }
+        .num-box{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            /* background-color: #222; */
+            border-radius: 37px;
+background: linear-gradient(315deg, #1f1f1f, #242424);
+box-shadow:  -8px -8px 12px #1a1a1a,
+             8px 8px 12px #2a2a2a;
+            transition: all 0.5s;
+        }
+        .num-box:hover{
+            background-color: black;
+            cursor: pointer;
+        }
+       
+        
+       .num-box span{
+            color: white;
+            line-height: 40px;
+        }
+        .cal-display{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            user-select: none;
+            
+        }
+        .cal-display input{
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            outline: none;
+            border: none;
+            background-color: rgba(0, 0, 0, 0);
+            text-align: right;
+            padding: 5%;
+            font-size: 30px;
+            caret-color: rgba(0, 0, 128, 0);
+            color: white;
+            user-select: none;
+            transition: all 0.3s;
+        }
+
+        .equal{
+            grid-row: 4/ 2 span;
+            grid-column: 4/ 1 span;
+
+        }
+        .plus{
+            grid-row: 3/ 1 span;
+            grid-column: 4/ 1 span;
+
+        }
+        .minus{
+            grid-row: 2/ 1 span;
+            grid-column: 4/ 1 span;
+
+        }
+        .back-space{
+            grid-row: 1/ 1 span;
+            grid-column: 2/ 1 span;
+        }
+        .operator, .back-space, .equal{
+            border-radius: 37px;
+background: linear-gradient(315deg, #b90139, #f50652);
+/* box-shadow:  -5px -5px 5px #bd003b, */
+             /* 5px 5px 5px #ff005f; */
+             box-shadow:  -8px -8px 12px #1a1a1a,
+             8px 8px 12px #2a2a2a;
+        }
+        ::placeholder{
+            color: white;
+            font-size: 15px;
+            text-align: center;
+            opacity: 0.4;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="cal-container">
+        <div class="box-cal">
+        <div class="cal-display">
+            <input  type="text" placeholder="Made By Mokardder" id="display" disabled name="display" >
+        </div>
+        <div class="cal-number-pad">
+        <div class="num-pad-container">
+            <!-- Operators -->
+            <div class="num-box back-space" onclick="display.value = display.value.toString().slice(0, -1);"><span><i class="fa-solid fa-delete-left"></i></span></div>
+            <div class="num-box operator" onclick="display.value = ''"><span>AC</span></div>
+            <div class="num-box operator" onclick="display.value += '/'"><span>/</span></div>
+            <div class="num-box operator" onclick="display.value += '*'"><span>*</span></div>
+            <div class="num-box operator minus" onclick="display.value += '-'" ><span>-</span></div>
+            <div class="num-box operator plus" onclick="display.value += '+'"><span>+</span></div>
+             <!-- Operators -->
+
+            <div class="num-box" onclick="display.value += '9'"><span>9</span></div>
+            <div class="num-box" onclick="display.value += '8'"><span>8</span></div>
+            <div class="num-box" onclick="display.value += '7'"><span>7</span></div>
+            
+            <div class="num-box" onclick="display.value += '6'"><span>6</span></div>
+            <div class="num-box" onclick="display.value += '5'"><span>5</span></div>
+            <div class="num-box" onclick="display.value += '4'"><span>4</span></div>
+            <div class="num-box" onclick="display.value += '3'"><span>3</span></div>
+            <div class="num-box" onclick="display.value += '2'"><span>2</span></div>
+            <div class="num-box" onclick="display.value += '1'"><span>1</span></div>
+            <div class="num-box" onclick="display.value += '0'"><span>0</span></div>
+            <div class="num-box" onclick="display.value += '00'"><span>00</span></div>
+            <div class="num-box" onclick="display.value += '.'"><span>.</span></div>
+            <div class="num-box equal" onclick="display.value = eval(display.value)"><span>=</span></div>
+        </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.container .box {
+  color: white;
+  height: 300px;
+  width: 400px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.1px);
+  -webkit-backdrop-filter: blur(4.1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  gap: 20px;
+}
+.container .box .model {
+  position: relative;
+}
+.container .box .model label {
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  pointer-events: none;
+  transition: 0.3s;
+  color: white;
+  font-size: 12px;
+}
+.container .box .model input {
+  padding: 5px;
+  border: none;
+  background-color: rgba(61, 57, 57, 0.712);
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.233);
+  color: white;
+  outline: none;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+.container .box .model input:hover {
+  background-color: #03e9f4;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4;
+}
+.container .box .model input:hover ~ label {
+  top: -20px;
+  left: 5px;
+}
+.container .box .model input::-moz-placeholder {
+  color: white;
+}
+.container .box .model input::placeholder {
+  color: white;
+}
+.container .box .model button {
+  margin-top: 20px;
+  height: 30px;
+  width: 100px;
+  background-color: rgba(61, 57, 57, 0.712);
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.container .box .model button:hover {
+  background-color: #03e9f4;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+  /* background-color:  rgba(66, 85, 21, 0.712); */
+}/*# sourceMappingURL=style.css.map */
