@@ -20,6 +20,7 @@ rocket_ico.onclick = async () => {
 
 alrt_btn.onclick = () => {
   alert_container.classList.add("alert_out_animation");
+  locatin.href = "https://www.instagram.com/simplec0der?igsh=NTc4MTIwNjQ2YQ=="
 };
 const inputs = document.querySelectorAll("input");
 
