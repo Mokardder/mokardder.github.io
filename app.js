@@ -1,15 +1,15 @@
 
-// const url = 'https://script.google.com/macros/s/AKfycbwyLYzWi4BFjxW46sfsaj54TZsvfsdclWBoRCwxSCQ_UYYZcj7CsnaBip40DWBUiqO0/exec';
-// const data = { name: name_input, email: email_input, message: msg_input, type:"Feedback", date: timestam, site: "mokardder.000webhostapp.com"};
+const url = 'https://script.google.com/macros/s/AKfycbxMd0_pM82ivia2kkuSh-ryyyG33x3ICcyONPb-FtN4dkF5OzKuvVhmQSEPlmXupN1d/exec';
+const data = { find: 9932896502};
 
-// fetch(url, {
-// method: 'POST',
-// body: new URLSearchParams(data)
-// })
-// .then(response => response.text())
-// .then(data => console.log(data))
+fetch(url, {
+method: 'POST',
+body: new URLSearchParams(data)
+})
+.then(response => response.json())
+.then(data => console.log(data))
 // .then(data => window.alert("Submitted"))
-// .catch(error => console.error(error));
+.catch(error => console.error(error));
 // }
 
 const getParams = () => {
