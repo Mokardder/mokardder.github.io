@@ -11,19 +11,52 @@
 // .then(data => window.alert("Submitted"))
 // .catch(error => console.error(error));
 // }
-/* Get Location */
-// Get the full URL query string
-const queryString = window.location.search;
 
-// Parse the query string parameters
+const getParams = () => {
+ const queryString = window.location.search;
+
+
 const urlParams = new URLSearchParams(queryString);
 
 // Get the value of the 'param' parameter
-const paramValue = urlParams.get('param');
+return urlParams.get('consumerId');
+}
 
 
-alert(paramValue)
+const lastParam = getParams()
 
-console.log(paramValue); // This will output 'Mokaredder' if the URL is ?param=Mokaredder
+
+if (lastParam != null || undefined ){
+  alert(lastParam)
+}
+
+
+
+// Function to show or hide the loader based on the argument passed
+function toggleLoader(action) {
+    const loader = document.getElementById('loader');
+    
+    if (action === 'show') {
+        loader.style.display = 'flex'; // Show the loader
+    } else if (action === 'hide') {
+        loader.style.display = 'none'; // Hide the loader
+    } else {
+        console.error('Invalid action. Use "show" or "hide".');
+    }
+}
+
+// Example usage: Simulate data fetching with a timeout
+window.onload = function() {
+    // Show the loader
+    toggleLoader('show');
+
+    // Simulate loading time (e.g., 3 seconds)
+    setTimeout(() => {
+        // Hide the loader and show content
+        toggleLoader('hide');
+        document.getElementById('content').style.display = 'block';
+    }, 3000); // Adjust this duration as needed
+};
+
 
  
