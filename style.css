@@ -1,6 +1,54 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap');
 
+
+/* Resetting some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Dashboard container */
+.dashboard {
+    display: flex;
+    gap: 20px;
+}
+
+/* Card styles */
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+}
+
+.card h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 18px;
+    color: #555;
+    font-weight: 500;
+}
+
+
+
 .loader-container {
     position: fixed;
     top: 0;
