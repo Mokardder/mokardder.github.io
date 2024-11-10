@@ -33,13 +33,20 @@ if (lastParam != null || undefined ){
 
 
 // Function to show or hide the loader based on the argument passed
+// Function to show or hide the loader with fade animation based on the argument passed
 function toggleLoader(action) {
     const loader = document.getElementById('loader');
     
     if (action === 'show') {
-        loader.style.display = 'flex'; // Show the loader
+        loader.style.display = 'flex'; // Make sure loader is in the DOM
+        setTimeout(() => {
+            loader.style.opacity = 1; // Fade in the loader
+        }, 10); // A slight delay to trigger the CSS transition
     } else if (action === 'hide') {
-        loader.style.display = 'none'; // Hide the loader
+        loader.style.opacity = 0; // Fade out the loader
+        setTimeout(() => {
+            loader.style.display = 'none'; // Hide the loader after fade-out is complete
+        }, 500); // Match this with the CSS transition duration
     } else {
         console.error('Invalid action. Use "show" or "hide".');
     }
