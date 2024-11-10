@@ -1,6 +1,6 @@
 
 const url = 'https://script.google.com/macros/s/AKfycbxMd0_pM82ivia2kkuSh-ryyyG33x3ICcyONPb-FtN4dkF5OzKuvVhmQSEPlmXupN1d/exec';
-const data = { find: "9593179626"};
+const data = { find: "9593179626", type: "deedup"};
 
 fetch(url, {
 method: 'POST',
