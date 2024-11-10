@@ -1,142 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
-    <style>
-        /* Basic reset for padding and margins */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
 
-		/* Style for loader container */
-.loader-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-/* Style for spinner animation */
-.spinner {
-    width: 60px;
-    height: 60px;
-    border: 8px solid #ccc;
-    border-top: 8px solid #4CAF50;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-/* Style for loading text */
-.loader-text {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #333;
-    font-weight: bold;
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
-
-/* Keyframes for spinner rotation */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Example content styling */
-.content {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    margin-top: 100px;
-}
-
-
-        /* Center the form on the page */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-        }
-
-        /* Form container styling */
-        form {
-            background-color: #fff;
-            padding: 20px 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            color: #555;
-            margin-bottom: 8px;
-            text-align: left;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-        <div class="loader-container" id="loader">
-        <div class="spinner"></div>
-        <p class="loader-text">Wait While Fetching Your Details...</p>
+    <div class="dashboard">
+        <div class="card">
+            <h2>User Name</h2>
+            <p id="username">John Doe</p>
+        </div>
+        <div class="card">
+            <h2>Subscription</h2>
+            <p id="subscription">Premium Plan</p>
+        </div>
+        <div class="card">
+            <h2>Annual Date</h2>
+            <p id="annualDate">2025-11-10</p>
+        </div>
     </div>
-    <form action="/login" method="post">
-        <h2>Login</h2>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        
-        <button type="submit">Login</button>
-    </form>
-
-    <script src="app.js"></script>
 </body>
 </html>
+
