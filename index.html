@@ -3,110 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Privacy Policy</title>
+    <title>Login Form</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+        /* Basic reset for padding and margins */
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #f4f4f4;
         }
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        /* Center the form on the page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
         }
-        h1, h2 {
-            color: #0056b3;
-        }
-        h1 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-        h2 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        p {
-            margin-bottom: 15px;
-        }
-        ul {
-            list-style: disc;
-            padding-left: 20px;
-            margin-bottom: 20px;
-        }
-        a {
-            color: #0056b3;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            margin-top: 30px;
+
+        /* Form container styling */
+        form {
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
             text-align: center;
-            font-size: 14px;
-            color: #888;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <h1>Privacy Policy</h1>
-
-        <p><strong>Privacy Policy of DAC_Collector (android.iocl.dac_collector)</p>
-
-        <p>Thank you for choosing to use our app! Your privacy is important to us, and we are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and share information when you use our app.</p>
-
-        <h2>Information We Collect</h2>
-
-        <p><strong>Device Information:</strong> We collect DAC (Device Authentication Code) from your device. This information is used to identify and authenticate your device for service purposes.</p>
-
-        <p><strong>Usage Data:</strong> Our app also collects information related to your interaction with advertisements. Each time you watch an ad, we track your activity and assign points toward your reward quota.</p>
-
-        <p><strong>Customer Interaction Data:</strong> The collected DAC Code is shared with the delivery personnel to facilitate free LPG subsidy rewards based on your ad engagement.</p>
-
-        <h2>How We Use Your Information</h2>
-
-        <ul>
-            <li><strong>Rewards and Subsidies:</strong> The DAC Code is used to track your ad engagement. You will accumulate points with each advertisement viewed, and upon reaching a quota of 200 points, you will be eligible to receive rewards in the form of LPG subsidies.</li>
-            <li><strong>Ad Tracking:</strong> We use your interaction data to monitor and reward you for watching ads.</li>
-        </ul>
-
-        <h2>Sharing of Information</h2>
-
-        <p>Your DAC Code is shared with the delivery personnel responsible for delivering LPG subsidies. We do not sell or share your personal information with third parties for marketing purposes.</p>
-
-        <h2>How We Protect Your Information</h2>
-
-        <p>We implement appropriate technical and organizational measures to protect the security of your personal data. While we take precautions to safeguard your information, no system is completely secure, and we cannot guarantee the security of your information.</p>
-
-        <h2>User Rights</h2>
-
-        <ul>
-            <li>Request access to the information we collect.</li>
-            <li>Ask for correction or deletion of your data.</li>
-            <li>Withdraw your consent to the collection of DAC Codes at any time, although doing so may limit the functionality of the app.</li>
-        </ul>
-
-        <h2>Changes to This Privacy Policy</h2>
-
-        <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with a new effective date.</p>
-
-        <h2>Contact Us</h2>
-
-        <p>If you have any questions or concerns about this Privacy Policy, please contact us at crazyboychoto@gmail.com.</p>
-    </div>
-
-    <footer>
-        &copy; 2024 Your Company Name. All rights reserved.
-    </footer>
-
+    <form action="/login" method="post">
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>
