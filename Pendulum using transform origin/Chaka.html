@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaka 😉</title>
+    <style>
+        .container{
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            place-items: center;
+        }
+        .chaka{
+            /* background-color: black; */
+            height: 150px;
+            width: 150px;
+            border: 10px solid black;
+            border-radius: 50%;
+            display: grid;
+            position: relative;
+            place-items: center;
+            animation: chakaGhor 2s  infinite ;
+            
+        }
+        .chakar-holder{
+            background-color: black;
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            border-radius: 50%;
+        }
+        
+        .chakar-rod{
+            background-color: red;
+            position: absolute;
+            height: 80px;
+            width: 10px;
+            left: 52px;
+            top: -5px;
+            transform: rotate(-30deg);
+            z-index: -1;
+        }
+        .rod-2{
+            height: 80px;
+            left: 85px;
+            top: 70px;
+        }
+        .rod-3{
+            height: 75px;
+            left: 25px;
+            top: 45px;
+            transform: rotate(-100deg);
+
+        }
+        .rod-4{
+            height: 85px;
+            left: 105px;
+            top: 25px;
+            transform: rotate(-100deg);
+        }
+        .rod-1{
+            height: 80px;
+            left: 52px;
+            top: -5px;
+        }
+
+        @keyframes chakaGhor {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        
+    </style>
+</head>
+<body>
+   <div class="container">
+    <div class="chaka">
+        <div class="chakar-rod rod-1"></div>
+        <div class="chakar-rod rod-2"></div>
+        <div class="chakar-rod rod-3"></div>
+        <div class="chakar-rod rod-4"></div>
+        <div class="chakar-holder"></div>
+    </div>
+   </div>
+    
+</body>
+</html>

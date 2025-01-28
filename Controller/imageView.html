@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="imageView.css" />
+  </head>
+  <body>
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="imgbox">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/3/3c/IMG_logo_%282017%29.svg"
+          alt=""
+        />
+      </div>
+      <div class="imgbox">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/3/3c/IMG_logo_%282017%29.svg"
+          alt=""
+        />
+      </div>
+    </div>
+    <script>
+      const img = document.querySelectorAll(".imgbox"),
+        overlay = document.querySelector(".overlay");
+
+      const BASE_URL = "";
+      img.forEach((a) => {
+        a.onclick = () => {
+          overlay.style.display = "flex";
+          overlay.innerHTML = `
+    <div class="imgview">
+        <img
+          src="${a.childNodes[1].src}"
+          alt=""
+          srcset=""
+        />
+    </div>
+            
+            `;
+        };
+
+        overlay.onclick = (a) => {
+          overlay.style.display = "none";
+        };
+      });
+
+      let getImages = async () => {
+        const response = await fetch(
+          "http://mokardder.great-site.net/api/browser/getImage.php "
+        );
+        const movies = await response.json();
+        console.log(movies);
+      };
+
+      getImages();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #222;
+}
+
+.container {
+  padding: 8px;
+  color: white;
+  width: 520px;
+  margin: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  flex-direction: column;
+  border-radius: 5px;
+  gap: 10px;
+  position: relative;
+}
+.container h2 {
+  text-align: center;
+}
+.container .device_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+  border-radius: 5px;
+}
+.container .device_list .device {
+  height: 50px;
+  width: 100%;
+  background-color: rgba(39, 90, 19, 0.418);
+  border-radius: 5px;
+  transition: 0.2s;
+  position: relative;
+  display: grid;
+  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.container .device_list .device:hover {
+  cursor: pointer;
+  background-color: rgba(39, 90, 19, 0.815);
+}
+.container .device_list .device .ico {
+  font-size: 25px;
+  position: absolute;
+  top: 13px;
+  left: 10px;
+}
+.container .device_list .device .d-name {
+  font-size: 15px;
+  text-align: center;
+  white-space: nowrap;
+  width: 20%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.container .device_list .device .l-active {
+  position: absolute;
+  font-size: 12px;
+  top: 18px;
+  right: 10px;
+}
+.container .reload {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  transition: 0.3s;
+}
+.container .reload:hover {
+  cursor: pointer;
+  transform: rotate(100deg);
+}/*# sourceMappingURL=style.css.map */

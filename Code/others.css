@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.container{
+    background-color: rgb(173, 55, 134);
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.item{
+    border:  5px solid #fff2cc;
+    background-color: #f2b800;
+    font-size: 60px;
+    padding: 20px;
+    margin: 20px;
+}
+.container2{
+    display: flex;
+    margin: 20px;
+    justify-content: flex-end;
+    flex-flow: row wrap;
+
+}
+.item1{
+    padding: 20px;
+}

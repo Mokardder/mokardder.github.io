@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Drop Down</title>
+    <style>
+        body {
+            padding: 10px 0 0 50px;
+        }
+        #nav > ul {
+            background-color: yellow;
+            position: relative;
+            float: left;
+            padding: 0;
+        }
+        #nav ul li{
+            position: relative;
+            float: left;
+            list-style: none;
+            display: inline;
+            
+        }
+        #nav ul li a{
+            padding: 0 15px;
+            line-height: 32px;
+            text-decoration: none;
+            color: black;
+         }
+         #nav ul li:hover{
+            background-color: yellowgreen;
+         }
+         #nav ul ul {
+            display: none;
+            width: 160%;
+            position: absolute;
+            padding: 0;
+            background-color: yellow;
+         }
+         #nav ul ul li{
+            width: 100%;
+         }
+         #nav ul ul ul{
+            top: 0;
+            left: 100%;
+         }
+         #nav ul ul ul ul{
+            padding: 0;
+            /* top: 50%; */
+         }
+         #nav ul li:hover>ul{
+            display: block;
+         }
+    </style>
+</head>
+
+<body>
+    <h1>Pure Css Drop Down</h1>
+    <nav id="nav">
+        <ul>
+            <li><a href="#">Home &#8600 </a>
+                <ul>
+                    <li><a href="#">Bronze Plan</a></li>
+                    <li><a href="#">Bronze Plan</a>
+                    <li><a href="#">Bronze Plan &#8594; </a>
+                    <ul>
+                        <li><a href="#">Another Sub</a></li>
+                        <li><a href="#">Another Sub &#8594; </a>
+                        <ul>
+                            <li><a href="#">Maybe Anothe1</a></li>
+                            <li><a href="#">Maybe Anothe2</a></li>
+                            <li><a href="#">Maybe Another3</a></li>
+                        </ul>
+
+                        </li>
+                    </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Plans </a>
+        </ul>
+    </nav>
+</body>
+
+</html>

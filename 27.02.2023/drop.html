@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Drop Down</title>
+    <style>
+        body {
+            padding: 10px 0 0 50px;
+        }
+#nav > ul {
+    background-color: yellow;
+    float: left;
+    position: relative;
+    padding: 0;
+}
+#nav ul li{
+    float: left;
+    list-style: none;
+    padding: 0;
+    position: relative;
+}
+#nav ul li a{
+    text-decoration: none;
+    line-height: 32px;
+    padding: 0 15px;
+    color: black;
+}
+ul li:hover{
+    background-color: yellowgreen;
+}
+ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    padding: 0;
+    background-color: yellow;
+    width: 140%;
+}
+ul ul li{
+    border-left: 3px yellow solid;
+    background-color: yellow;;
+}
+ul ul li:hover{
+    border-left: 3px rgb(40, 40, 175) solid;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    /* background-color: rgba(182, 182, 146, 0.555);; */
+}
+
+
+
+ul ul li{
+    width: 100%;
+}
+ul ul ul{
+    top: 0;
+    left: 100%
+}
+.minus{
+    width: 110%;
+}
+.plus{
+    width: 120%;
+}
+#nav ul li:hover>ul{
+    display: block;
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>Pure Css Drop Down</h1>
+    <nav id="nav">
+        <ul>
+            <li><a href="#">Home &#8600</a>
+            <ul>
+                <li><a href="#">Sub Home 1</a></li>
+                <li><a href="#">Sub Home 2</a></li>
+                <li><a href="#">Sub Home 2</a>
+                <ul class="minus">
+                    <li><a href="#">Deep Home 1</a></li>
+                    <li><a href="#">Deep Home 2</a></li>
+                    <li><a href="#">Deep Home 3</a>
+                    <ul class="plus">
+                        <li><a href="#">Sub Deep Home1</a></li>
+                        <li><a href="#">Sub Deep Home2</a></li>
+                        <li><a href="#">Sub Deep Home3</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                
+                </li>
+            </ul>
+            
+            </li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Plans </a>
+        </ul>
+    </nav>
+</body>
+
+</html>

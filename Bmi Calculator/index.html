@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="gender">
+          <label for="M">
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/018/922/131/original/3d-male-gender-symbol-sign-png.png"
+              alt=""
+            />
+            <h3>Male</h3>
+            <input
+              class="genderCheck"
+              value="Male"
+              id="M"
+              type="radio"
+              name="gender"
+              id=""
+            />
+          </label>
+          <label for="F">
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/018/922/116/original/3d-female-gender-symbol-sign-png.png"
+              alt=""
+            />
+            <h3>Female</h3>
+            <input
+              class="genderCheck"
+              value="Female"
+              id="F"
+              type="radio"
+              name="gender"
+              id=""
+            />
+          </label>
+        </div>
+        <div class="input gender">
+          <div class="long">
+            <h2 id="we">Weight(Kg)</h2>
+            <input class="inp" type="text" />
+          </div>
+          <div class="long sepa">
+            <h2 id="hei" class="abs">Height(Centimeter)</h2>
+            <input class="inp" type="text" />
+            <h2 id="age" class="abs">Age(Year)</h2>
+            <input class="inp" type="text" />
+          </div>
+          <button class="submit">Check</button>
+        </div>
+        <div class="result">
+          <div class="con">
+            <h2>BMI Result</h2>
+            <h3>BMI Score</h3>
+            <h3>BMI Status = Obesity</h3>
+            <h3>You May Look Like this =></h3>
+          </div>
+          <div class="con">
+            <img
+              class="imgMan"
+              src="https://www.pngkey.com/png/full/79-799682_transparent-person-obese-fat-person-cartoon-transparent.png"
+              alt=""
+              srcset=""
+            />
+          </div>
+        </div>
+
+        <!-- https://www.pngkey.com/png/full/79-799682_transparent-person-obese-fat-person-cartoon-transparent.png -->
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

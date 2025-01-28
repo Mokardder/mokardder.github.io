@@ -1,0 +1,134 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #222;
+  @include flex();
+  transition: all 0.4s;
+}
+.gender {
+  transform: translate(00%, 200px);
+  transition: transform 0.4s;
+  @include flex();
+  gap: 20px;
+  input[type="radio"] {
+    appearance: none;
+    height: 80px;
+    width: 150px;
+    background-color: rgba(0, 162, 255, 0.281);
+    cursor: pointer;
+    border-radius: 2px;
+    &:checked {
+      background-color: rgba(0, 162, 255, 0.664);
+      box-shadow: 0 0 2px 1px rgb(0, 162, 255), 0 0 10px 5px rgb(0, 162, 255);
+    }
+  }
+  label {
+    position: relative;
+    h3 {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      color: white;
+    }
+    img {
+      position: absolute;
+      height: 80px;
+      right: -5px;
+      pointer-events: none;
+    }
+  }
+}
+.input {
+  transform: translateX(-400%);
+  transition: transform 0.4s;
+  flex-direction: column;
+  height: 250px;
+  width: 400px;
+  background-color: white;
+  border-radius: 5px;
+  gap: 10px;
+  position: relative;
+  button {
+    position: absolute;
+    bottom: -60px;
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.233);
+    cursor: pointer;
+  }
+  .long {
+    padding: 0 5px 5px 5px;
+    height: 120px;
+    width: 100%;
+    // background-color: red;
+    display: flex;
+    // justify-content: ;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    position: relative;
+    #we {
+      position: absolute;
+      top: 0;
+      font-size: 20px;
+    }
+    .abs {
+      position: absolute;
+      font-size: 20px;
+    }
+    #hei {
+      top: 0;
+      left: 25px;
+    }
+    #age {
+      top: 0;
+      right: 55px;
+    }
+    input {
+      width: 100%;
+      height: 90px;
+      background-color: rgba(255, 255, 255, 0.171);
+      outline: none;
+      border: 1px solid rgba(0, 0, 0, 0.37);
+      border-radius: 5px;
+      font-size: 80px;
+      text-align: center;
+    }
+  }
+}
+.result {
+  transition: transform 0.4s;
+  transform: translate(-400%, 0px);
+  height: 300px;
+  width: 400px;
+  background-color: white;
+  border-radius: 5px;
+  @include flex();
+  padding: 5px;
+  justify-content: space-around;
+  gap: 20px;
+  .con {
+    @include flex();
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    img {
+      height: 250px;
+    }
+  }
+}

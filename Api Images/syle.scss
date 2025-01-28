@@ -1,0 +1,77 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@mixin dflex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  background: #222;
+  height: 100vh;
+  width: 100vw;
+  @include dflex;
+}
+.image-container {
+  //   max-height: 90vh;
+  padding: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  .btn {
+    padding: 10px;
+    color: red;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .image {
+    height: 200px;
+    width: 200px;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    transition: 0.4s;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    .hover {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      transition: 0.3s;
+      transform: translateY(200px);
+
+      font-size: 40px;
+      color: white;
+      background: linear-gradient(
+        180deg,
+        rgba(2, 0, 36, 0) 0%,
+        rgba(0, 0, 0, 0.9304096638655462) 82%
+      );
+      p {
+        position: relative;
+        top: 50px;
+      }
+    }
+    cursor: pointer;
+    &:hover .hover {
+      display: flex;
+      transform: translateY(0px);
+      cursor: pointer;
+    }
+  }
+}

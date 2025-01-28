@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Flex Box</title>
+	<style>
+		body {
+			width: 100%;
+
+			/* background-image:url("background.jpg"); */
+			/* background-image:url("https://images.unsplash.com/photo-1483664852095-d6cc6870702d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"); */
+			background-repeat: no-repeat;
+			margin: 0px;
+		}
+
+		.parent {
+			margin: 20%;
+			height: 300px;
+			width: 500px;
+			/*		    margin: 20%;*/
+			background-color: #FF0000;
+			border: 8px #FF5950 solid;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			/*			flex-wrap: wrap;*/
+			/*            flex-wrap: nowrap; /* no wrap is default value */
+			/*            flex-wrap: wrap-reverse;*/
+			flex-wrap: wrap;
+			/* flex-direction: column; */
+		}
+
+		.chld1,
+		.chld2,
+		.chld3,
+		.chld4,
+		.chld5,
+		.chld6 {
+
+			height: 90px;
+			width: 90px;
+			margin: 4px;
+			background-color: white;
+			font-size: 25px;
+			/*			text-align: center;*/
+
+
+		}
+
+		.chld4 {
+			background-color: blue;
+		}
+
+		.chld3 {
+			background-color: yellow;
+		}
+
+
+		/* if this two div set to inline element then the second div can fit beside the 1st div or set 1st div to inline and then use any inline elemnt lke <samp> */
+
+		.block {
+			background-color: blue;
+
+		}
+
+		.non {
+
+			background-color: yellow;
+		}
+
+		/* Navbar */
+		.navbar {
+			position: absolute;
+			top: 0;
+			background: linear-gradient(to right, #34e89e, #0f3443);
+			opacity: 1;
+			width: 100%;
+			height: 70px;
+		}
+
+		.container {
+			max-width: 1200px;
+			display: flex;
+			justify-content: space-between;
+			/* margin: 0px auto; */
+			align-items: center;
+			height: 70px;
+		}
+
+		nav ul {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+			margin-right: 10px;
+		}
+
+		nav ul li {
+			list-style: none;
+		}
+
+		a {
+			color: white;
+			text-decoration: none;
+			font-size: 17px;
+			margin: 0px 15px;
+			border-radius: 15px;
+			transition: 0.2s;
+			padding: 5px;
+		}
+
+		a:hover {
+			border: 0px white solid;
+			padding: 5px;
+			border-radius: 15px;
+			background-color: rgb(255, 255, 255);
+			color: #456d96;
+
+		}
+
+		.logo {
+			margin-left: 20px;
+
+
+		}
+
+		img {
+			margin-top: 5px;
+			height: 50px;
+			width: 50px;
+			border: 1px white solid;
+			border-radius: 50%;
+			transition: 0.3s;
+			object-fit: cover;
+
+		}
+
+		img:hover {
+			border: 1px rgba(255, 255, 255, 0.712) solid;
+			border-width: 3px;
+		}
+
+		.footer {
+			width: 100%;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		P {
+			color: black;
+			font-size: 18px;
+		}
+
+		span:hover {
+			color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="navbar">
+		<div class="container">
+			<div class="logo">
+				<img src="Potrait.jpg" title="Profile Image" alt="profile_img">
+				<!-- <img src="https://th.bing.com/th/id/OIP.xEMVC_AcMdZ4KVx91myfvgHaHa?pid=ImgDet&rs=1" title="Profile Image" alt="profile_img"> -->
+
+			</div>
+			<nav>
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="glass">
+
+	</div>
+
+	<!-- <div class="block">This is a block type div</div>
+	<div class="non">as the previos div is block element so this text cant fit beside the div</div> -->
+
+	<!-- parent box -->
+	<div class="parent">
+		<!-- child box -->
+		<div class="chld1"></div>
+		<div class="chld2"></div>
+		<div class="chld3"></div>
+		<div class="chld4"></div>
+		<div class="chld5"></div>
+		<div class="chld6"></div>
+	</div>
+
+	<div class="footer">
+		<footer>
+			<p>All Rights Reserved @
+				<span>M</span><span>o</span><span>k</span><span>a</span><span>r</span><span>d</span><span>d</span><span>e</span><span>r</span>
+
+			</p>
+		</footer>
+	</div>
+
+
+</body>
+
+</html>

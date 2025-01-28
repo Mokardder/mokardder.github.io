@@ -1,0 +1,9 @@
+thead{
+    background-color: black;
+    color: wheat;
+}
+td{
+    border: 1px solid black;
+    text-align: center;
+    column-span: 500;
+}

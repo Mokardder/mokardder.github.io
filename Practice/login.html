@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 60px;
+            background-image: url(https://images.unsplash.com/photo-1605002633049-3d164fc50933?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80);
+
+        }
+        .container p{
+            color: white;
+        }
+        .login-form{
+            height: 300px;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.459);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 15px;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: white;
+            font-weight: 200;
+        }
+        form p{
+            font-size: 20px;
+        }
+        form input{
+            padding: 10px;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+
+        }
+        form button{
+            padding: 8px;
+            border-radius: 30px;
+            border: none;
+            background-color: rgb(9, 148, 9);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        form div input{
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <form action="#">
+                <p>Welcome Home</p>
+                <input type="text" required placeholder="Full Name">
+                <input type="email" required placeholder="Email">
+                <input type="text" required placeholder="Phone">
+                <div><input type="checkbox" name="" id=""><span>By Giving My Phone Number, I Agree to Being Contracted by Phone, Sms, Whatsapp or Any Other Channel</span></div>
+                <button type="submit">ENQUIRE NOW</button>
+                
+            </form>
+        </div>
+        <p>HIRA/P/KOL/2019/000397 | www.hira.wb.gov.in</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Practice</title>
+    <style>
+        body{
+            padding: 10px 0 0 50px;
+        }
+        #menu>ul{
+            position: relative;
+            background-color: rgb(41, 67, 68);
+            float: left;
+            margin: 0;
+            padding: 0;
+
+        }
+        #menu ul li{
+            position: relative;
+            list-style: none;
+            float: left;
+            margin: 0;
+            padding: 0 25px;
+        }
+        #menu ul a{
+            text-decoration: none;
+            color: white;
+            line-height: 32px;
+            /* font-weight: 700 */
+}
+#menu ul li:hover {
+    background-color: rgb(52, 112, 114); 
+
+}
+#menu ul ul{
+    display: none;
+    position: absolute;
+    top: 100%;
+    padding: 0;
+    right: 0;
+    left: 0;
+}
+#menu ul ul li{
+    width:119%;
+    
+ background-color: rgb(41, 67, 68);
+}
+
+#menu ul ul ul{
+    width: 100%;
+  
+    position: absolute;
+    top: 0;
+    padding: 0;
+    right: 100%;
+    left: 100%;
+}
+#menu ul ul ul ul{
+    width: 40%;
+    position: absolute;
+    top: 0px;
+    padding: 0;
+
+}
+#menu ul li:hover>ul{
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Pure Css made by Me inspired by Teacher</h1>
+    <nav id="menu">
+        <ul>
+            <li><a href="#">Home  &#8595;</a>
+            <ul>
+                <li><a href="#">Sub-Home 2</a></li>
+                <li><a href="#">Sub-Home 2</a></li>
+                <li><a href="#">Sub-Home 3 &#8594; </a>
+                <ul>
+                    <li><a href="#">Deep-Home 1</a></li>
+                    <li><a href="#">Deep-Home 2</a></li>
+                    <li><a href="#">Deep-Home 3 &#8594; </a>
+                    <ul>
+                        <li><a href="#">Sub-Deep Home 1</a></li>
+                        <li><a href="#">Sub-Deep Home 1</a></li>
+                        <li><a href="#">Sub-Deep Home 1</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                </li>
+            </ul>
+            
+            </li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a>
+            <ul>
+                <li><a href="#">Free Money &#8377;67,552/-</a></li>
+                <li><a href="#">Free Diamond FF</a></li>
+                <li><a href="#">Free UC PUBG &#8594; </a>
+                <ul>
+                    <li><a href="#">You Got Scammed</a></li>
+                </ul>
+                </li>
+            </ul>
+            
+            </li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

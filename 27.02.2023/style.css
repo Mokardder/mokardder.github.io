@@ -1,0 +1,89 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap'); */
+
+body {
+    padding: 10px 0 0 50px;
+    /* box-sizing: border-box; */
+    background: url(bg.jpg) no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-family: arial;
+}
+
+#menu {
+    margin-top: 15px;
+}
+
+#menu>ul {
+    background: #2c3e50;
+}
+
+#menu ul {
+    list-style: none;
+    position: relative;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+#menu ul a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 32px;
+    padding: 0 15px;
+    /* font-family: 'Tilt Prism', cursive; */
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#menu ul li {
+    position: relative;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+#menu ul li.active {
+    background: #2895ee;
+}
+
+#menu ul li:hover {
+    /*background:#f6f6f6*/
+    background: #0ca7d6;
+}
+
+#menu ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1db7ef;
+    padding: 0;
+}
+
+#menu ul ul li {
+    /* float: none; */
+    width: 200px;
+    border-left: 3px solid #1db7ef;
+}
+
+#menu ul ul li:hover {
+    border-left: 3px solid #2c3e50;
+}
+
+#menu ul ul a {
+    line-height: 120%;
+    padding: 10px 15px
+}
+
+#menu ul ul ul {
+    top: -4px;
+    left: 100%;
+}
+
+#menu ul li:hover>ul {
+    display: block;
+}

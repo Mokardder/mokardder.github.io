@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controller</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <a href="imageView.html"><button class="hoverBtn">Open Gallery</button></a>
+    <div class="headerTop">
+      <div class="left"><i class="fa-solid fa-arrow-left"></i></div>
+      <div class="device"></div>
+    </div>
+    <div class="device-stats">
+      <h2 class="d-header">Device Stats</h2>
+      <i class="fa-solid fa-arrows-rotate reload"></i>
+      <div class="online">
+        <i class="fa-solid fa-signal ico"></i>
+        <div class="wrapper">
+          <p class="updateUi">Status: <span></span></p>
+          <p class="updateUi"></p>
+        </div>
+      </div>
+      <div class="online">
+        <i class="fa-brands fa-android ico"></i>
+        <div class="wrapper">
+          <p class="updateUi"></p>
+          <p class="updateUi"></p>
+        </div>
+      </div>
+      <div class="online">
+        <i class="fa-solid fa-earth-oceania ico"></i>
+        <div class="wrapper">
+          <p class="updateUi"></p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Box Flash Light -->
+      <div class="box">
+        <div class="header"><h2>Flashlight</h2></div>
+        <div class="btn">
+          <button class="flashBtn" data="TORCH_ON" type="1">TURN ON</button>
+          <button class="flashBtn" data="TORCH_ON" type="0">TURN OFF</button>
+        </div>
+      </div>
+      <!-- Box Camera -->
+      <div class="box">
+        <div class="header">
+          <h2>Click Picture</h2>
+        </div>
+        <div class="wrapper">
+          <label for="Flash"
+            >Flash <input type="checkbox" name="" id="flash"
+          /></label>
+          <button class="actionBtn" data="TAKE_IMAGE" type="1">Front</button>
+          <button class="actionBtn" data="TAKE_IMAGE" type="0">Back</button>
+        </div>
+      </div>
+
+      <!-- Box TTS -->
+
+      <div class="box">
+        <div class="header">
+          <h2>Send Voice</h2>
+        </div>
+        <div class="wrapper">
+          <input type="text" name="" id="ttsInput" />
+          <button class="ttsBtn" data="SEND_TTS" type="1">Send</button>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

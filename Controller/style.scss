@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hoverBtn {
+  position: absolute;
+  top: 70px;
+  left: 4px;
+  height: 30px;
+  width: 90px;
+  background-color: white;
+  border-radius: 5px;
+  z-index: 2;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  background: #222;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  font-family: "Poppins", sans-serif;
+}
+.headerTop {
+  position: absolute;
+  top: 0;
+  height: 50px;
+  width: 100%;
+  background-color: rgb(64, 66, 64);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  border-bottom: 1px solid rgb(255, 251, 0);
+  .left {
+    @include flex();
+    height: 30px;
+    width: 30px;
+    background-color: wheat;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .device {
+    color: white;
+  }
+}
+.device-stats {
+  margin-top: 62px;
+  // height: 200px;
+  overflow: hidden;
+  // width: 90%;
+  border-radius: 5px;
+  @include flex();
+  // flex-wrap: wrap;
+  gap: 10px;
+  background-color: rgba(60, 68, 71, 0.637);
+  justify-content: space-around;
+  position: relative;
+  padding: 50px 10px 20px 10px;
+  color: white;
+  .d-header {
+    width: 100%;
+    text-align: center;
+    background-color: rgb(39, 107, 39);
+    position: absolute;
+    top: 0;
+  }
+  .reload {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  .online {
+    height: 140px;
+    width: 150px;
+    background-color: rgb(218, 218, 85);
+    border-radius: 5px;
+    @include flex();
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px 5px;
+    position: relative;
+    .ico {
+      color: black;
+      position: absolute;
+      top: 8px;
+      font-size: 80px;
+    }
+    p {
+      color: black;
+      font-size: 13px;
+    }
+  }
+  .wrapper {
+    position: absolute;
+    bottom: 5px;
+    @include flex();
+    flex-direction: column;
+  }
+}
+
+.container {
+  @include flex();
+  gap: 10px;
+  .box {
+    height: 200px;
+    width: 200px;
+    @include flex();
+    background-color: rgba(60, 68, 71, 0.637);
+    border-radius: 8px;
+    position: relative;
+    transition: 0.3s;
+    .header {
+      position: absolute;
+      top: 5px;
+      color: white;
+      font-size: 15px;
+    }
+    button {
+      margin-top: 20px;
+      height: 30px;
+      width: 100px;
+      background-color: rgba(61, 57, 57, 0.712);
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.171);
+      transition: all 0.4s;
+      &:hover {
+        background-color: #03e9f4;
+        box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+          0 0 100px #03e9f4;
+        /* background-color:  rgba(66, 85, 21, 0.712); */
+      }
+    }
+    .btn {
+      @include flex();
+      flex-direction: column;
+    }
+    &:hover {
+      background-color: rgba(48, 138, 31, 0.637);
+    }
+    .wrapper {
+      color: white;
+      @include flex();
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Bar</title>
+    <style>
+        body{
+            overflow: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-bar{
+            height: 70px;
+            background-color: yellow;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu > ul {
+        float: left;
+        background-color: rgb(145, 255, 0);
+        padding: 0;
+      }
+      ul li {
+        position: relative;
+        float: left;
+        list-style: none;
+      }
+      a {
+        padding: 0 15px;
+        line-height: 30px;
+        text-decoration: none;
+        color: black;
+      }
+      ul li:hover {
+        background-color: rgb(108, 160, 39);
+      }
+      ul ul {
+
+        /* display: none; */
+        position: absolute;
+        top: 100%;
+        background-color: rgb(145, 255, 0);
+        padding: 0;
+        width: 110px;
+      }
+      ul ul li{
+        width: 100%;
+      }
+
+      ul ul ul {
+        padding: 0;
+        top: 0;
+        left: 100%;
+        margin: 0;
+        width: 110px;
+      }
+      ul ul ul ul {
+        width: 110px;
+      }
+      ul ul ul ul {
+        width: 170px;
+      }
+ 
+      .active {
+        background-color: rgb(108, 160, 39);
+      }
+      ul li:hover > ul {
+        display: block;
+      }
+       nav ul li:hover>ul{
+    display: block;
+}
+img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="container">
+            <div class="logo">
+                <img src="https://th.bing.com/th/id/OIP.PlUghRkXvx9eqZvManVhsgHaIS?pid=ImgDet&rs=1" alt="Profile" title="Profile Image">
+            </div>
+        </div>
+        <nav class="menu">
+            <ul>
+              <li class="active">
+                <a href="">Home 1</a>
+                <ul>
+                  <li><a href="">Sub Home 1</a></li>
+                  <li><a href="">Sub Home 1</a></li>
+                  <li>
+                    <a href="">Sub Home 1</a>
+                    <ul>
+                      <li><a href="">Deep Home</a></li>
+                      <li><a href="">Deep Home</a></li>
+                      <li>
+                        <a href="">Deep Home</a>
+                        <ul>
+                          <li><a href="">Sub Deep Home 1</a></li>
+                          <li><a href="">Sub Deep Home 1</a></li>
+                          <li>
+                            <a href="">Sub Deep Home 1</a>
+                            <ul>
+                              <li><a href="">Random Deep Home</a></li>
+                              <li><a href="">Random Deep Home</a></li>
+                              <li><a href="">Random Deep Home</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="">About</a></li>
+              <li><a href="">Contact</a></li>
+              <li><a href="">Price</a>
+            </li>
+            </ul>
+          </nav>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Excercise</title>
+</head>
+<body>
+    <form action="">
+        <h1>Checkout</h1>
+        <label for="payment">Payment Method :</label>
+       <select  name="Card" id="payment" required>
+        <option value="" selected>-- Select Any --</option>
+        <option value="Visa">Visa Card</option>
+        <option value="Rupay" >Rupay Card</option>
+        <option value="Master">Master Card</option>
+    </select>
+    <fieldset>
+        <legend >Shipping Method</legend>
+        <div>
+            <input required name="delivery" id="hd" type="radio" value="homedelivery">
+            <label for="hd">Home Delivery</label>
+        </div>
+        <div>
+            <input required name="delivery" id="ta" type="radio" value="takeaway">
+            <label for="ta">Take Away</label>
+        </div>
+        </fieldset>
+        <div>
+        <label for="gifty">Yes</label>
+        <input value="Yes" name="gift" id="gifty" type="Radio">
+        <label for="giftn">No</label>
+        <input value="No" name="gift" id="giftn" type="Radio">
+    </div>
+    <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
