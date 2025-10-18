@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crash Handler Dashboard</title>
+    <title>Crash Report Dashboard</title>
+
       <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
       :root {
@@ -42,6 +43,9 @@
         border-right: 1px solid var(--border-color);
         overflow-y: auto;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
       }
 
       .sidebar-header {
@@ -49,6 +53,7 @@
         border-bottom: 1px solid var(--border-color);
         background-color: var(--primary-color);
         color: white;
+        flex-shrink: 0;
       }
 
       .sidebar-header h1 {
@@ -59,6 +64,11 @@
       .sidebar-header p {
         font-size: 0.9rem;
         opacity: 0.8;
+      }
+
+      .crash-list-container {
+        overflow-y: auto;
+        flex-grow: 1;
       }
 
       .crash-list {
@@ -81,16 +91,26 @@
         border-left: 4px solid var(--primary-color);
       }
 
-      .crash-summary {
-        display: flex;
-        flex-direction: column;
-      }
+    .crash-summary {
+      display: flex;
+      flex-direction: column;
+    }
 
-      .crash-app-version {
-        font-weight: bold;
-        color: var(--primary-color);
-        margin-bottom: 5px;
-      }
+    .crash-name {
+      font-weight: bold;
+      color: var(--dark-color);
+      margin-bottom: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      white-space: normal;
+    }
+
+    .crash-app-version {
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
 
       .crash-device {
         font-size: 0.9rem;
@@ -147,6 +167,7 @@
       .detail-title h2 {
         font-size: 1.5rem;
         color: var(--dark-color);
+        word-break: break-word;
       }
 
       .detail-actions button {
@@ -216,6 +237,7 @@
         max-height: 300px;
         overflow-y: auto;
         font-size: 0.9rem;
+        word-break: break-word;
       }
 
       .all-details {
@@ -226,6 +248,7 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 15px;
+        table-layout: fixed;
       }
 
       .details-table th,
@@ -233,12 +256,18 @@
         padding: 12px 15px;
         text-align: left;
         border-bottom: 1px solid var(--border-color);
+        word-break: break-word;
       }
 
       .details-table th {
         background-color: #f8f9fa;
         font-weight: 600;
         color: var(--dark-color);
+        width: 30%;
+      }
+
+      .details-table td {
+        width: 70%;
       }
 
       .details-table tr:hover {
@@ -324,9 +353,11 @@
           <h1>Crash Handler Dashboard</h1>
           <p>View and manage application crashes</p>
         </div>
-        <ul class="crash-list" id="crashList">
-          <!-- Crash items will be populated by JavaScript -->
-        </ul>
+        <div class="crash-list-container">
+          <ul class="crash-list" id="crashList">
+            <!-- Crash items will be populated by JavaScript -->
+          </ul>
+        </div>
       </div>
 
       <!-- Main content area -->
@@ -412,26 +443,54 @@
             ? '<span class="completed-badge">Completed</span>'
             : "";
 
+          // Extract crash name from stack trace
+          const crashName = extractCrashName(crash.STACK_TRACE) || 
+                            crash.CUSTOM_DATA?.CRASH_MESSAGE || 
+                            "Unknown Crash";
+
           listItem.innerHTML = `
                     <div class="crash-summary">
-                        <div class="crash-app-version">${
-                          crash.APP_VERSION_NAME
-                        } ${completedBadge}</div>
-                        <div class="crash-device">${crash.PHONE_MODEL} (${
-            crash.BRAND
-          })</div>
-                        <div class="crash-message">${
-                          crash.CUSTOM_DATA.CRASH_MESSAGE
-                        }</div>
-                        <div class="crash-date">${formatDate(
-                          crash.USER_CRASH_DATE
-                        )}</div>
+                        <div class="crash-name">${crashName} ${completedBadge}</div>
+                        <div class="crash-app-version">${crash.APP_VERSION_NAME}</div>
+                        <div class="crash-device">${crash.MARKET_NAME} ${crash.PHONE_MODEL} (${crash.BRAND})</div>
+                        <div class="crash-message">${crash.CUSTOM_DATA?.CRASH_MESSAGE || "No message"}</div>
+                        <div class="crash-date">${formatDate(crash.USER_CRASH_DATE)}</div>
                     </div>
                 `;
 
           listItem.addEventListener("click", () => selectCrash(crash));
           crashList.appendChild(listItem);
         });
+      }
+
+      // Extract crash name from stack trace
+      function extractCrashName(stackTrace) {
+        if (!stackTrace) return null;
+        
+        // Try to find the exception class name
+        const lines = stackTrace.split('\n');
+        if (lines.length > 0) {
+          const firstLine = lines[0].trim();
+          
+          // Common patterns for exception headers
+          const patterns = [
+         /^([a-zA-Z_$][\w$]*\.)*[a-zA-Z_$][\w$]*(Exception|Error)(:.*)?$/
+
+
+          ];
+          
+          for (const pattern of patterns) {
+            const match = firstLine.match(pattern);
+            if (match) {
+              return match[0].trim();
+            }
+          }
+          
+          // If no pattern matched, return the first line truncated
+          return firstLine.length > 50 ? firstLine.substring(0, 50) + '...' : firstLine;
+        }
+        
+        return null;
       }
 
       // Select a crash to view details
@@ -461,9 +520,7 @@
                         <h2>Crash Report: ${crash.REPORT_ID}</h2>
                     </div>
                     <div class="detail-actions">
-                        <button class="${completedClass}" onclick="toggleCompleted('${
-          crash.REPORT_ID
-        }')">${completedText}</button>
+                        <button class="${completedClass}" onclick="toggleCompleted('${crash.REPORT_ID}')">${completedText}</button>
                     </div>
                 </div>
                 
@@ -472,64 +529,46 @@
                     <div class="detail-grid">
                         <div class="detail-item">
                             <div class="detail-label">App Version</div>
-                            <div class="detail-value">${
-                              crash.APP_VERSION_NAME
-                            } (${crash.APP_VERSION_CODE})</div>
+                            <div class="detail-value">${crash.APP_VERSION_NAME} (${crash.APP_VERSION_CODE})</div>
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">Package Name</div>
-                            <div class="detail-value">${
-                              crash.PACKAGE_NAME
-                            }</div>
+                            <div class="detail-value">${crash.PACKAGE_NAME}</div>
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">Device</div>
-                            <div class="detail-value">${crash.MARKET_NAME} (${crash.PHONE_MODEL}) (${
-          crash.BRAND
-        })</div>
+                            <div class="detail-value">${crash.MARKET_NAME || "Unknown"} (${crash.PHONE_MODEL}) (${crash.BRAND})</div>
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">Android Version</div>
-                            <div class="detail-value">${
-                              crash.ANDROID_VERSION
-                            }</div>
+                            <div class="detail-value">${crash.ANDROID_VERSION}</div>
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">Crash Class</div>
-                            <div class="detail-value">${
-                              crash.CUSTOM_DATA.CRASH_CLASS
-                            }</div>
+                            <div class="detail-value">${crash.CUSTOM_DATA?.CRASH_CLASS || "Unknown"}</div>
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">Current Activity</div>
-                            <div class="detail-value">${
-                              crash.CUSTOM_DATA.CURRENT_ACTIVITY
-                            }</div>
+                            <div class="detail-value">${crash.CUSTOM_DATA?.CURRENT_ACTIVITY || "Unknown"}</div>
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">App Mode</div>
-                            <div class="detail-value">${
-                              crash.CUSTOM_DATA.APP_MODE
-                            }</div>
+                            <div class="detail-value">${crash.CUSTOM_DATA?.APP_MODE || "Unknown"}</div>
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">Crash Date</div>
-                            <div class="detail-value">${formatDate(
-                              crash.USER_CRASH_DATE
-                            )}</div>
+                            <div class="detail-value">${formatDate(crash.USER_CRASH_DATE)}</div>
                         </div>
                     </div>
                     
                     <div class="detail-item" style="margin-top: 20px;">
                         <div class="detail-label">Crash Message</div>
-                        <div class="detail-value">${
-                          crash.CUSTOM_DATA.CRASH_MESSAGE
-                        }</div>
+                        <div class="detail-value">${crash.CUSTOM_DATA?.CRASH_MESSAGE || "No message"}</div>
                     </div>
                     
                     <div class="detail-item" style="margin-top: 20px;">
                         <div class="detail-label">Stack Trace</div>
-                        <div class="stack-trace">${crash.STACK_TRACE}</div>
+                        <div class="stack-trace">${crash.STACK_TRACE || "No stack trace available"}</div>
                     </div>
                 </div>
                 
@@ -561,6 +600,8 @@
 
           if (typeof value === "object") {
             displayValue = JSON.stringify(value, null, 2);
+          } else if (value === null || value === undefined) {
+            displayValue = "N/A";
           }
 
           rows += `
