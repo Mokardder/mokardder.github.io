@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crash Handler Dashboard</title>
+    <style>
+      :root {
+        --primary-color: #3498db;
+        --danger-color: #e74c3c;
+        --success-color: #2ecc71;
+        --warning-color: #f39c12;
+        --light-color: #f8f9fa;
+        --dark-color: #343a40;
+        --gray-color: #6c757d;
+        --border-color: #dee2e6;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      /* Sidebar Styles */
+      .sidebar {
+        width: 350px;
+        background-color: white;
+        border-right: 1px solid var(--border-color);
+        overflow-y: auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .sidebar-header {
+        padding: 20px;
+        border-bottom: 1px solid var(--border-color);
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .sidebar-header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
+
+      .sidebar-header p {
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      .crash-list {
+        list-style: none;
+      }
+
+      .crash-item {
+        padding: 15px;
+        border-bottom: 1px solid var(--border-color);
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .crash-item:hover {
+        background-color: #f8f9fa;
+      }
+
+      .crash-item.active {
+        background-color: #e3f2fd;
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .crash-summary {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .crash-app-version {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 5px;
+      }
+
+      .crash-device {
+        font-size: 0.9rem;
+        color: var(--gray-color);
+        margin-bottom: 5px;
+      }
+
+      .crash-message {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .crash-date {
+        font-size: 0.8rem;
+        color: var(--gray-color);
+      }
+
+      .completed-badge {
+        display: inline-block;
+        background-color: var(--success-color);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 0.7rem;
+        margin-left: 5px;
+      }
+
+      /* Main Content Styles */
+      .main-content {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+      }
+
+      .crash-detail {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        padding: 25px;
+      }
+
+      .detail-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .detail-title h2 {
+        font-size: 1.5rem;
+        color: var(--dark-color);
+      }
+
+      .detail-actions button {
+        padding: 8px 15px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.2s;
+      }
+
+      .detail-actions button:hover {
+        background-color: #2980b9;
+      }
+
+      .detail-actions button.completed {
+        background-color: var(--success-color);
+      }
+
+      .detail-actions button.completed:hover {
+        background-color: #27ae60;
+      }
+
+      .important-details {
+        margin-bottom: 30px;
+      }
+
+      .section-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        color: var(--dark-color);
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+      }
+
+      .detail-item {
+        margin-bottom: 10px;
+      }
+
+      .detail-label {
+        font-weight: 600;
+        color: var(--gray-color);
+        font-size: 0.9rem;
+        margin-bottom: 3px;
+      }
+
+      .detail-value {
+        font-size: 1rem;
+        word-break: break-word;
+      }
+
+      .stack-trace {
+        background-color: #f8f9fa;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        padding: 15px;
+        font-family: monospace;
+        white-space: pre-wrap;
+        max-height: 300px;
+        overflow-y: auto;
+        font-size: 0.9rem;
+      }
+
+      .all-details {
+        margin-top: 30px;
+      }
+
+      .details-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+
+      .details-table th,
+      .details-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .details-table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        color: var(--dark-color);
+      }
+
+      .details-table tr:hover {
+        background-color: #f8f9fa;
+      }
+
+      .no-crash-selected {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        color: var(--gray-color);
+      }
+
+      .no-crash-selected i {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        opacity: 0.5;
+      }
+
+      #loaderOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .loader {
+        width: 48px;
+        height: 48px;
+        border: 5px solid #fff;
+        border-bottom-color: #3498db;
+        border-radius: 50%;
+        animation: rotation 1s linear infinite;
+      }
+
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          width: 100%;
+          max-height: 40vh;
+        }
+
+        .main-content {
+          padding: 15px;
+        }
+
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loader Element -->
+    <div id="loaderOverlay">
+      <div class="loader"></div>
+    </div>
+    <div class="container">
+      <!-- Sidebar with crash list -->
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <h1>Crash Handler Dashboard</h1>
+          <p>View and manage application crashes</p>
+        </div>
+        <ul class="crash-list" id="crashList">
+          <!-- Crash items will be populated by JavaScript -->
+        </ul>
+      </div>
+
+      <!-- Main content area -->
+      <div class="main-content">
+        <div id="crashDetail" class="crash-detail">
+          <div class="no-crash-selected">
+            <i>📱</i>
+            <h3>Select a crash to view details</h3>
+            <p>Click on any crash from the list to see its full details</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Sample data - in a real application, this would come from an API
+      // @mokardder_manual - Add your API endpoint here to fetch crash data
+
+      let crashes = []; // define globally so all functions can use it
+
+      // Load data and init dashboard
+      document.addEventListener("DOMContentLoaded", async () => {
+        console.log("Fetching crashes...");
+        crashes = await fetchCrashes();
+        console.log(crashes);
+
+        if (crashes && crashes.length) {
+          initDashboard(crashes);
+        }
+      });
+
+      // Initialize the dashboard
+      function initDashboard() {
+        renderCrashList();
+        if (crashes.length > 0) {
+          selectCrash(crashes[0]);
+        }
+      }
+
+      async function fetchCrashes() {
+        const url =
+          "https://script.google.com/macros/s/AKfycbxDW7CuKtFuVZImkpbUTzyVn51YcQqS3Ta9p-fTZzQUF-kiPsByHmaPPU29shlK0Skt/exec";
+        // showLoader accepts no message parameter in this file
+
+        showLoader();
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify({ type: "get_crashes" }),
+          });
+          if (!response.ok) {
+            hideLoader();
+            throw new Error("Network response was not ok.");
+          }
+          hideLoader();
+          const data = await response.json();
+
+          return data.crashes;
+          //   let decoded = atob(data.data);
+          //   let users = [];
+          //   try { users = JSON.parse(decoded); } catch (err) { users = []; }
+          //   try { localStorage.setItem('users', JSON.stringify(users)); } catch (err) { }
+          //   renderUserResults(users);
+        } catch (error) {
+          hideLoader();
+
+          throw error;
+        }
+      }
+
+      // --- make markComplete async ---
+
+      // Render the list of crashes
+      function renderCrashList() {
+        crashList.innerHTML = "";
+
+        crashes.forEach((crash) => {
+          const listItem = document.createElement("li");
+          listItem.className = "crash-item";
+          listItem.setAttribute("data-id", crash.REPORT_ID);
+
+          const completedBadge = crash.completed
+            ? '<span class="completed-badge">Completed</span>'
+            : "";
+
+          listItem.innerHTML = `
+                    <div class="crash-summary">
+                        <div class="crash-app-version">${
+                          crash.APP_VERSION_NAME
+                        } ${completedBadge}</div>
+                        <div class="crash-device">${crash.PHONE_MODEL} (${
+            crash.BRAND
+          })</div>
+                        <div class="crash-message">${
+                          crash.CUSTOM_DATA.CRASH_MESSAGE
+                        }</div>
+                        <div class="crash-date">${formatDate(
+                          crash.USER_CRASH_DATE
+                        )}</div>
+                    </div>
+                `;
+
+          listItem.addEventListener("click", () => selectCrash(crash));
+          crashList.appendChild(listItem);
+        });
+      }
+
+      // Select a crash to view details
+      function selectCrash(crash) {
+        // Update active state in list
+        document.querySelectorAll(".crash-item").forEach((item) => {
+          item.classList.remove("active");
+          if (item.getAttribute("data-id") === crash.REPORT_ID) {
+            item.classList.add("active");
+          }
+        });
+
+        // Render crash details
+        renderCrashDetail(crash);
+      }
+
+      // Render detailed view of a crash
+      function renderCrashDetail(crash) {
+        const completedText = crash.completed
+          ? "Completed"
+          : "Mark as Completed";
+        const completedClass = crash.completed ? "completed" : "";
+
+        crashDetail.innerHTML = `
+                <div class="detail-header">
+                    <div class="detail-title">
+                        <h2>Crash Report: ${crash.REPORT_ID}</h2>
+                    </div>
+                    <div class="detail-actions">
+                        <button class="${completedClass}" onclick="toggleCompleted('${
+          crash.REPORT_ID
+        }')">${completedText}</button>
+                    </div>
+                </div>
+                
+                <div class="important-details">
+                    <h3 class="section-title">Important Details</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-label">App Version</div>
+                            <div class="detail-value">${
+                              crash.APP_VERSION_NAME
+                            } (${crash.APP_VERSION_CODE})</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Package Name</div>
+                            <div class="detail-value">${
+                              crash.PACKAGE_NAME
+                            }</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Device</div>
+                            <div class="detail-value">${crash.MARKET_NAME} (${crash.PHONE_MODEL}) (${
+          crash.BRAND
+        })</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Android Version</div>
+                            <div class="detail-value">${
+                              crash.ANDROID_VERSION
+                            }</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Crash Class</div>
+                            <div class="detail-value">${
+                              crash.CUSTOM_DATA.CRASH_CLASS
+                            }</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Current Activity</div>
+                            <div class="detail-value">${
+                              crash.CUSTOM_DATA.CURRENT_ACTIVITY
+                            }</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">App Mode</div>
+                            <div class="detail-value">${
+                              crash.CUSTOM_DATA.APP_MODE
+                            }</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Crash Date</div>
+                            <div class="detail-value">${formatDate(
+                              crash.USER_CRASH_DATE
+                            )}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item" style="margin-top: 20px;">
+                        <div class="detail-label">Crash Message</div>
+                        <div class="detail-value">${
+                          crash.CUSTOM_DATA.CRASH_MESSAGE
+                        }</div>
+                    </div>
+                    
+                    <div class="detail-item" style="margin-top: 20px;">
+                        <div class="detail-label">Stack Trace</div>
+                        <div class="stack-trace">${crash.STACK_TRACE}</div>
+                    </div>
+                </div>
+                
+                <div class="all-details">
+                    <h3 class="section-title">All Crash Data</h3>
+                    <table class="details-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${renderAllDetails(crash)}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+      }
+
+      // Render all crash details in a table
+      function renderAllDetails(crash) {
+        let rows = "";
+
+        for (const [key, value] of Object.entries(crash)) {
+          if (key === "completed") continue; // Skip the completed flag
+
+          let displayValue = value;
+
+          if (typeof value === "object") {
+            displayValue = JSON.stringify(value, null, 2);
+          }
+
+          rows += `
+                    <tr>
+                        <td>${key}</td>
+                        <td>${displayValue}</td>
+                    </tr>
+                `;
+        }
+
+        return rows;
+      }
+
+      // Toggle completed status
+      function toggleCompleted(reportId) {
+        markComplete(reportId);
+        // @mokardder_manual - Add your API call here to update the completed status
+        const crash = crashes.find((c) => c.REPORT_ID === reportId);
+        if (crash) {
+          crash.completed = !crash.completed;
+          renderCrashList();
+          renderCrashDetail(crash);
+        }
+      }
+
+      //
+
+      async function markComplete(reportId) {
+        showLoader();
+
+        const url =
+          "https://script.google.com/macros/s/AKfycbxDW7CuKtFuVZImkpbUTzyVn51YcQqS3Ta9p-fTZzQUF-kiPsByHmaPPU29shlK0Skt/exec";
+        // showLoader accepts no message parameter in this file
+
+        showLoader();
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify({ is_completed: true, report_id: reportId }),
+          });
+          if (!response.ok) {
+            hideLoader();
+            throw new Error("Network response was not ok.");
+          }
+          hideLoader();
+          const data = await response.text();
+
+          console.log()
+
+          return data.crashes;
+          //   let decoded = atob(data.data);
+          //   let users = [];
+          //   try { users = JSON.parse(decoded); } catch (err) { users = []; }
+          //   try { localStorage.setItem('users', JSON.stringify(users)); } catch (err) { }
+          //   renderUserResults(users);
+        } catch (error) {
+          hideLoader();
+
+          throw error;
+        }
+      }
+
+      function showLoader() {
+        document.getElementById("loaderOverlay").style.display = "flex";
+      }
+
+      function hideLoader() {
+        document.getElementById("loaderOverlay").style.display = "none";
+      }
+
+      // Format date for display
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleString();
+      }
+
+      // Initialize the dashboard when the page loads
+      document.addEventListener("DOMContentLoaded", initDashboard);
+    </script>
+  </body>
+</html>
