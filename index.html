@@ -1,50 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Opening Soon</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #0d1117;
-            color: #f0f6fc;
-            font-family: Arial, sans-serif;
-            font-size: 2rem;
-            letter-spacing: 1px;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <title>Opening Soon</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .loader {
-            border: 6px solid #1f2937;
-            border-top: 6px solid #58a6ff;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 1.2s linear infinite;
-            margin-top: 25px;
-        }
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #0d1117, #000);
+      color: #f0f6fc;
+      font-family: "Segoe UI", Arial, sans-serif;
+      overflow: hidden;
+    }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+    h1 {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      text-align: center;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
 
-        .fade-text {
-            animation: fadeInOut 2s ease-in-out infinite;
-        }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #58a6ff, 0 0 20px #58a6ff; }
+      to { text-shadow: 0 0 25px #1f6feb, 0 0 45px #58a6ff; }
+    }
 
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-    </style>
+    .loader {
+      margin-top: 40px;
+      width: 70px;
+      height: 70px;
+      border: 6px solid rgba(255, 255, 255, 0.1);
+      border-top: 6px solid #58a6ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .tagline {
+      position: absolute;
+      bottom: 60px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: #9ca3af;
+      opacity: 0.8;
+      animation: fade 3s ease-in-out infinite;
+    }
+
+    @keyframes fade {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .heart {
+      color: #ff4b4b;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+  </style>
 </head>
 <body>
-    <div class="fade-text">Opening Soon...</div>
-    <div class="loader"></div>
+  <h1>Opening Soon...</h1>
+  <div class="loader"></div>
+  <div class="tagline">
+    Hosted with <span class="heart">❤️</span> in Padmalavpur, Amdanga
+  </div>
 </body>
 </html>
