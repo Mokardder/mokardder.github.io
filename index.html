@@ -1,31 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Opening Soon</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0d1117;
+            color: #f0f6fc;
+            font-family: Arial, sans-serif;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            overflow: hidden;
+        }
+
+        .loader {
+            border: 6px solid #1f2937;
+            border-top: 6px solid #58a6ff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1.2s linear infinite;
+            margin-top: 25px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .fade-text {
+            animation: fadeInOut 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-     <div class="loader-container" id="loader">
-        <div class="spinner"></div>
-        <p class="loader-text">Wait While Fetching Your Details...</p>
-    </div>
-
-    <div class="dashboard">
-        <div class="card">
-            <h2>User Name</h2>
-            <p id="username">John Doe</p>
-        </div>
-        <div class="card">
-            <h2>Subscription</h2>
-            <p id="subscription">Premium Plan</p>
-        </div>
-        <div class="card">
-            <h2>Annual Date</h2>
-            <p id="annualDate">2025-11-10</p>
-        </div>
-    </div>
-
-     <script src="app.js"></script>
+    <div class="fade-text">Opening Soon...</div>
+    <div class="loader"></div>
 </body>
 </html>
-
