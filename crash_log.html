@@ -444,9 +444,7 @@
             : "";
 
           // Extract crash name from stack trace
-          const crashName = extractCrashName(crash.STACK_TRACE) || 
-                            crash.CUSTOM_DATA?.CRASH_MESSAGE || 
-                            "Unknown Crash";
+          const crashName = crash.CUSTOM_DATA?.CRASH_MESSAGE;
 
           listItem.innerHTML = `
                     <div class="crash-summary">
@@ -567,7 +565,7 @@
                     
                     <div class="detail-item" style="margin-top: 20px;">
                         <div class="detail-label">Crash Message</div>
-                        <div class="detail-value">${crash.STACK_TRACE || "No message"}</div>
+                        <div class="detail-value">${crash.CUSTOM_DATA?.CRASH_MESSAGE || "No message"}</div>
                     </div>
                     
                     <div class="detail-item" style="margin-top: 20px;">
